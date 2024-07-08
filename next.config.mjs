@@ -2,8 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-  	dangerouslyAllowSVG: true,
-    domains: ['placehold.co'],
+    dangerouslyAllowSVG: true,
+    domains: ['localhost'],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3000',
+        pathname: '/api/placeholder/**',
+      },
+    ],
   },
 }
 
