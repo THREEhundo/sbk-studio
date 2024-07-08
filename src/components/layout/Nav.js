@@ -1,5 +1,5 @@
 import React from 'react'
-import Placeholder from './Placeholder'
+import Placeholder from '../ui/Placeholder'
 
 export const Nav = () => {
 	return (
