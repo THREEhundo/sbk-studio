@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import Placeholder from './Placeholder'
 import { formatDate } from '../utils/utils'
+import Link from 'next/link'
 
 const BlogPostCard = ({ post }) => {
 	return (
-		<article
-			className='border-b pb-4 group hover:bg-gray-50 transition-colors duration-200'
-			aria-labelledby={`post-title-${post.id}`}>
-			<div className='space-y-2'>
+		<Link href={`/blog/${post.id}`} className='block'>
+			<article
+				className='border-b pb-4 group hover:bg-gray-50 transition-colors duration-200'
+				aria-labelledby={`post-title-${post.id}`}>
 				<h2
 					id={`post-title-${post.id}`}
 					className='text-2xl font-semibold group-hover:text-blue-600 transition-colors duration-200'>
@@ -41,24 +42,26 @@ const BlogPostCard = ({ post }) => {
 						</time>
 					</div>
 				</div>
-			</div>
-			<p className='mt-2 text-gray-600 line-clamp-3'>{post.excerpt}</p>
-			<div className='mt-2 flex items-center text-sm text-gray-500 space-x-2'>
-				<span aria-label='Estimated reading time'>
-					{post.readingTime} min read
-				</span>
-				<span aria-hidden='true'>•</span>
-				<ul className='flex flex-wrap gap-2' aria-label='Tags'>
-					{post.tags.map(tag => (
-						<li
-							key={tag}
-							className='bg-gray-200 px-2 py-1 rounded-full text-xs'>
-							{tag}
-						</li>
-					))}
-				</ul>
-			</div>
-		</article>
+				<p className='mt-2 text-gray-600 line-clamp-3'>
+					{post.excerpt}
+				</p>
+				<div className='mt-2 flex items-center text-sm text-gray-500 space-x-2'>
+					<span aria-label='Estimated reading time'>
+						{post.readingTime} min read
+					</span>
+					<span aria-hidden='true'>•</span>
+					<ul className='flex flex-wrap gap-2' aria-label='Tags'>
+						{post.tags.map(tag => (
+							<li
+								key={tag}
+								className='bg-gray-200 px-2 py-1 rounded-full text-xs'>
+								{tag}
+							</li>
+						))}
+					</ul>
+				</div>
+			</article>
+		</Link>
 	)
 }
 

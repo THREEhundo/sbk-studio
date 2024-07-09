@@ -6,7 +6,6 @@ import BlogPostCard from '../ui/BlogPostCard'
 const BlogPostContainer = async ({ dataSet }) => {
 	const data = await getData(`${dataSet}.json`)
 	console.log(getBlogPost(data))
-	console.log(`hi`)
 	return (
 		<section>
 			{getBlogPost(data).map(post => (
