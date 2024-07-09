@@ -1,26 +1,37 @@
+'use client'
 import React from 'react'
 import Placeholder from '../ui/Placeholder'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 export const Nav = () => {
+	const pathname = usePathname()
 	return (
 		<nav>
 			<ul>
 				<li>
-					<a href='/'>
+					<Link href='/'>
 						<Placeholder width={100} height={40} type='icon' />
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href='/about'>About</a>
+					<Link href='/about'>About</Link>
 				</li>
 				<li>
-					<a href='#portfolio'>Portfolio</a>
+					<Link
+						href={
+							pathname === '/'
+								? '?section=portfolio'
+								: '/?section=portfolio'
+						}>
+						Portfolio
+					</Link>
 				</li>
 				<li>
-					<a href='/services'>Services</a>
+					<Link href='/services'>Services</Link>
 				</li>
 				<li>
-					<a href='/blog'>Blog</a>
+					<Link href='/blog'>Blog</Link>
 				</li>
 			</ul>
 		</nav>
