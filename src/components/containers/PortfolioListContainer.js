@@ -4,10 +4,9 @@ import Card from '../ui/Card'
 
 const PortfolioListContainer = async () => {
 	const projects = await getData('projects.json')
-	console.log(projects)
 
 	return (
-		<section>
+		<section id='portfolio'>
 			{projects.map(project => (
 				<Card
 					key={project.id}
