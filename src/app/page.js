@@ -1,14 +1,11 @@
-import { getData } from '@/lib/getData'
 import Layout from '@/components/Layout'
-import Header from '@/components/Header'
 import Main from '@/components/Main'
+import Header from '@/components/layout/Header'
 
 export default function Home() {
-	const projects = getData('projects.json')
-
 	return (
 		<Layout>
-			<Header />
+			<Header dataSet={'homepage'} isHomepage={true} />
 			<Main />
 		</Layout>
 	)
