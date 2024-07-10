@@ -224,7 +224,7 @@
 
 	/* Footer */
 	.footer {
-		@apply bg-neutral-900 text-primary-100 py-8;
+		@apply bg-neutral text-primary-100 py-8;
 	}
 	.footer-title {
 		@apply text-lg font-semibold mb-4 text-primary-500;
