@@ -6,6 +6,7 @@ const Footer = () => {
 		<footer>
 			<Placeholder width={100} height={40} type='icon' />
 			<a href='mailto:example@example.com'>hello@sbkstudio.com</a>
+			<p className='font-hubot font-black text-9xl'>SBK STUDIO</p>
 			<nav aria-label='Footer navigation'>
 				<ul>
 					<li>
