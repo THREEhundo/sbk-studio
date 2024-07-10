@@ -11,15 +11,18 @@ const ButtonWrapper = ({
 	className,
 	...props
 }) => {
-	const handleClick = () => console.log(`Clicked`)
-	const handleClick1 = () => console.log(`Clicked1`)
-	const handler = 'onClick' ? handleClick : handleClick1
+	const handleClick = () => {
+		console.log(`Clicked: ${children}`)
+		if (onClick) onClick()
+	}
 
 	return (
 		<Button
-			onClick={handler}
+			onClick={handleClick}
 			variant={variant}
+			size={size}
 			disabled={disabled}
+			className={className}
 			{...props}>
 			{children}
 		</Button>

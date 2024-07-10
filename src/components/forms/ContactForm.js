@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-import { useState } from 'react/cjs/react.production.min'
+import React, { useState } from 'react'
 
 const ContactForm = () => {
 	const [formData, setFormData] = useState({
