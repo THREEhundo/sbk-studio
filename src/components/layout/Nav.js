@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Placeholder from '../ui/Placeholder'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
@@ -7,79 +7,23 @@ import Link from 'next/link'
 export const Nav = () => {
 	const pathname = usePathname()
 	const [isOpen, setIsOpen] = useState(false)
-	const [isMobile, setIsMobile] = useState(false)
-
-	useEffect(() => {
-		const checkMobile = () => {
-			setIsMobile(window.innerWidth < 768)
-		}
-		checkMobile()
-		window.addEventListener('resize', checkMobile)
-		return () => window.removeEventListener('resize', checkMobile)
-	}, [])
 
 	const toggleMenu = () => setIsOpen(!isOpen)
 
-	return (
-		<nav>
-			<div>
-				<div>
-					<Link href='/'>
-						<Placeholder width={100} height={40} type='icon' />
-					</Link>
+	useEffect(() => {
+		const closeMenu = () => setIsOpen(false)
+		window.addEventListener('resize', closeMenu)
+		return () => window.removeEventListener('resize', closeMenu)
+	}, [])
 
-					{isMobile ? (
-						<button
-							onClick={toggleMenu}
-							aria-expanded={isOpen}
-							aria-label='Toggle menu'>
-							<svg
-								className='h-6 w-6'
-								fill='none'
-								viewBox='0 0 24 24'
-								stroke='currentColor'>
-								{isOpen ? (
-									<path
-										strokeLinecap='round'
-										strokeLinejoin='round'
-										strokeWidth={2}
-										d='M6 18L18 6M6 6l12 12'
-									/>
-								) : (
-									<path
-										strokeLinecap='round'
-										strokeLinejoin='round'
-										strokeWidth={2}
-										d='M4 6h16M4 12h16M4 18h16'
-									/>
-								)}
-							</svg>
-						</button>
-					) : (
-						<ul>
-							<NavItems pathname={pathname} />
-						</ul>
-					)}
-				</div>
-			</div>
-
-			{/* Mobile menu, show/hide based on menu state */}
-			{isMobile && isOpen && (
-				<div>
-					<ul>
-						<NavItems pathname={pathname} mobile />
-					</ul>
-				</div>
-			)}
-		</nav>
-	)
-}
-
-const NavItems = ({ pathname, mobile }) => {
-	return (
+	const NavItems = () => (
 		<>
 			<li>
-				<Link href='/about'>About</Link>
+				<Link
+					href='/about'
+					className='block py-2 px-4 hover:text-secondary-500 transition-colors'>
+					About
+				</Link>
 			</li>
 			<li>
 				<Link
@@ -87,19 +31,81 @@ const NavItems = ({ pathname, mobile }) => {
 						pathname === '/'
 							? '?section=portfolio'
 							: '/?section=portfolio'
-					}>
+					}
+					className='block py-2 px-4 hover:text-secondary-500 transition-colors'>
 					Portfolio
 				</Link>
 			</li>
 			<li>
-				<Link href='/services'>Services</Link>
+				<Link
+					href='/services'
+					className='block py-2 px-4 hover:text-secondary-500 transition-colors'>
+					Services
+				</Link>
 			</li>
 			<li>
-				<Link href='/blog'>Blog</Link>
+				<Link
+					href='/blog'
+					className='block py-2 px-4 hover:text-secondary-500 transition-colors'>
+					Blog
+				</Link>
 			</li>
 			<li>
-				<Link href='/contact'>Contact</Link>
+				<Link
+					href='/contact'
+					className='block py-2 px-4 hover:text-secondary-500 transition-colors'>
+					Contact
+				</Link>
 			</li>
 		</>
 	)
+
+	return (
+		<nav className='container px-4 bg-neutral shadow-md h-16'>
+			<div className='mx-auto'>
+				<div className='flex justify-between items-center py-4'>
+					<Link href='/' className='flex items-center'>
+						<Placeholder width={100} height={40} type='icon' />
+					</Link>
+
+					<div className='md:hidden'>
+						<button
+							onClick={toggleMenu}
+							className='text-neutral hover:text-secondary-500 focus:outline-none focus:text-secondary-500'
+							aria-expanded={isOpen}
+							aria-label='Toggle menu'>
+							<svg
+								className='h-6 w-6 fill-neutral'
+								viewBox='0 0 24 24'>
+								{isOpen ? (
+									<path
+										fillRule='evenodd'
+										clipRule='evenodd'
+										d='M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z'
+									/>
+								) : (
+									<path
+										fillRule='evenodd'
+										d='M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z'
+									/>
+								)}
+							</svg>
+						</button>
+					</div>
+
+					<ul className='hidden md:flex space-x-4'>
+						<NavItems />
+					</ul>
+				</div>
+
+				{isOpen && (
+					<ul className='md:hidden pb-4'>
+						<NavItems />
+					</ul>
+				)}
+			</div>
+		</nav>
+	)
 }
+
+export default Nav

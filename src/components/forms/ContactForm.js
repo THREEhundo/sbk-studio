@@ -11,6 +11,7 @@ const ContactForm = () => {
 	})
 	const [errors, setErrors] = useState({})
 	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [submitStatus, setSubmitStatus] = useState(null)
 
 	const handleChange = e => {
 		const { name, value } = e.target
@@ -18,6 +19,10 @@ const ContactForm = () => {
 			...prevData,
 			[name]: value
 		}))
+		// Clear error when user starts typing
+		if (errors[name]) {
+			setErrors(prevErrors => ({ ...prevErrors, [name]: '' }))
+		}
 	}
 
 	const validateForm = () => {
@@ -52,13 +57,13 @@ const ContactForm = () => {
 				})
 
 				if (response.ok) {
-					alert('Message sent successfully!')
+					setSubmitStatus('success')
 					setFormData({ name: '', email: '', phone: '', message: '' })
 				} else {
 					throw new Error('Failed to send message')
 				}
 			} catch (error) {
-				alert('An error occurred. Please try again later.')
+				setSubmitStatus('error')
 				console.error('Submission error:', error)
 			} finally {
 				setIsSubmitting(false)
@@ -67,9 +72,14 @@ const ContactForm = () => {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<div>
-				<label htmlFor='name' className='block mb-1'>
+		<form
+			onSubmit={handleSubmit}
+			className='max-w-lg mx-auto bg-neutral-800 p-8 rounded-lg shadow-xl'>
+			<h2 className='text-3xl font-bold text-primary-500 mb-6'>
+				Contact Us
+			</h2>
+			<div className='mb-4'>
+				<label htmlFor='name' className='block text-primary-100 mb-2'>
 					Name
 				</label>
 				<input
@@ -78,7 +88,9 @@ const ContactForm = () => {
 					name='name'
 					value={formData.name}
 					onChange={handleChange}
-					className='w-full px-3 py-2 border rounded-md'
+					className={`w-full px-3 py-2 bg-neutral-700 text-primary-100 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 transition duration-200 ${
+						errors.name ? 'border-red-500' : 'border-neutral-600'
+					}`}
 					required
 				/>
 				{errors.name && (
@@ -86,8 +98,8 @@ const ContactForm = () => {
 				)}
 			</div>
 
-			<div>
-				<label htmlFor='email' className='block mb-1'>
+			<div className='mb-4'>
+				<label htmlFor='email' className='block text-primary-100 mb-2'>
 					Email
 				</label>
 				<input
@@ -96,7 +108,9 @@ const ContactForm = () => {
 					name='email'
 					value={formData.email}
 					onChange={handleChange}
-					className='w-full px-3 py-2 border rounded-md'
+					className={`w-full px-3 py-2 bg-neutral-700 text-primary-100 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 transition duration-200 ${
+						errors.email ? 'border-red-500' : 'border-neutral-600'
+					}`}
 					required
 				/>
 				{errors.email && (
@@ -104,8 +118,8 @@ const ContactForm = () => {
 				)}
 			</div>
 
-			<div>
-				<label htmlFor='phone' className='block mb-1'>
+			<div className='mb-4'>
+				<label htmlFor='phone' className='block text-primary-100 mb-2'>
 					Phone Number
 				</label>
 				<input
@@ -114,7 +128,9 @@ const ContactForm = () => {
 					name='phone'
 					value={formData.phone}
 					onChange={handleChange}
-					className='w-full px-3 py-2 border rounded-md'
+					className={`w-full px-3 py-2 bg-neutral-700 text-primary-100 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 transition duration-200 ${
+						errors.phone ? 'border-red-500' : 'border-neutral-600'
+					}`}
 					required
 				/>
 				{errors.phone && (
@@ -122,8 +138,10 @@ const ContactForm = () => {
 				)}
 			</div>
 
-			<div>
-				<label htmlFor='message' className='block mb-1'>
+			<div className='mb-6'>
+				<label
+					htmlFor='message'
+					className='block text-primary-100 mb-2'>
 					Message
 				</label>
 				<textarea
@@ -132,7 +150,9 @@ const ContactForm = () => {
 					value={formData.message}
 					onChange={handleChange}
 					rows='4'
-					className='w-full px-3 py-2 border rounded-md'
+					className={`w-full px-3 py-2 bg-neutral-700 text-primary-100 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 transition duration-200 ${
+						errors.message ? 'border-red-500' : 'border-neutral-600'
+					}`}
 					required></textarea>
 				{errors.message && (
 					<p className='text-red-500 text-sm mt-1'>
@@ -144,9 +164,20 @@ const ContactForm = () => {
 			<button
 				type='submit'
 				disabled={isSubmitting}
-				className='w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300'>
+				className='w-full bg-secondary-500 text-neutral py-2 px-4 rounded-md hover:bg-secondary-900 transition duration-300 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed'>
 				{isSubmitting ? 'Sending...' : 'Submit'}
 			</button>
+
+			{submitStatus === 'success' && (
+				<p className='mt-4 text-green-500 text-center'>
+					Message sent successfully!
+				</p>
+			)}
+			{submitStatus === 'error' && (
+				<p className='mt-4 text-red-500 text-center'>
+					Failed to send message. Please try again.
+				</p>
+			)}
 		</form>
 	)
 }

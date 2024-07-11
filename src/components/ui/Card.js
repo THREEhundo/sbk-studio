@@ -1,24 +1,54 @@
 import React from 'react'
 import Placeholder from './Placeholder'
 
-const Card = ({ id, title, description, image, featured }) => {
+const Card = ({ id, title, description, image, featured, list }) => {
+	console.log('featured', featured)
 	return (
 		<div
 			id={id}
-			className='flex flex-col h-full bg-neutral rounded-lg shadow-md overflow-hidden'>
-			<Placeholder
-				width={320}
-				height={240}
-				type='image'
-				className='w-full'
-			/>
-			<div className='flex flex-col flex-grow p-4'>
-				<h2 className='text-xl font-semibold mb-2'>{title}</h2>
-				<p className='flex-grow'>{description}</p>
+			className='bg-neutral-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl'>
+			<div className='p-6'>
+				{image && (
+					<div className='mb-4'>
+						<Placeholder
+							width={320}
+							height={240}
+							type='image'
+							className='w-full h-auto rounded-lg'
+						/>
+					</div>
+				)}
+				<h2 className='text-2xl font-bold text-primary-500 mb-2'>
+					{title}
+				</h2>
+				<p className='text-primary-100 mb-4'>{description}</p>
+				{list && Array.isArray(list) && list.length > 0 && (
+					<ul className='space-y-2'>
+						{list.map((item, index) => (
+							<li key={index} className='flex items-start'>
+								<svg
+									className='w-5 h-5 text-secondary-500 mr-2 flex-shrink-0'
+									fill='none'
+									stroke='currentColor'
+									viewBox='0 0 24 24'
+									xmlns='http://www.w3.org/2000/svg'>
+									<path
+										strokeLinecap='round'
+										strokeLinejoin='round'
+										strokeWidth='2'
+										d='M5 13l4 4L19 7'></path>
+								</svg>
+								<span className='text-primary-100'>
+									{item.title}
+								</span>
+							</li>
+						))}
+					</ul>
+				)}
 				{featured && (
-					<span className='mt-2 inline-block bg-secondary-500 text-neutral px-2 py-1 rounded text-sm'>
+					<div className='mt-4 inline-block bg-secondary-500 text-neutral px-3 py-1 rounded-full text-sm font-semibold'>
 						Featured
-					</span>
+					</div>
 				)}
 			</div>
 		</div>

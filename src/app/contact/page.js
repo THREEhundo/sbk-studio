@@ -5,7 +5,7 @@ import React from 'react'
 export default function ContactPage() {
 	return (
 		<Layout>
-			<section>
+			<section className='container'>
 				<h1>Contact Us</h1>
 				<ContactForm />
 			</section>

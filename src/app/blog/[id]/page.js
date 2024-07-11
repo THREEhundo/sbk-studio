@@ -1,15 +1,24 @@
 import { getBlogPostById } from '@/lib/getBlogPostById'
 import FullBlogPost from '@/components/FullBlogPost'
+import Layout from '@/components/Layout'
+import { serialize } from 'next-mdx-remote/serialize'
 
 const BlogPostPage = async ({ params }) => {
-	console.log('Params', params)
 	const post = await getBlogPostById(params.id)
 
 	if (!post) {
-		return <div>Post not found</div>
+		return (
+			<Layout>
+				<div>Post not found</div>
+			</Layout>
+		)
 	}
 
-	return <FullBlogPost post={post} />
+	return (
+		<Layout>
+			<FullBlogPost post={post} />
+		</Layout>
+	)
 }
 
 export default BlogPostPage
