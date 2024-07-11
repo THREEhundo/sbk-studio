@@ -1,21 +1,28 @@
+import React from 'react'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import { formatDate } from '@/components/utils/utils'
-import MDXContent from './MDXContent'
+
+const MDXContent = dynamic(() => import('./MDXContent'), { ssr: false })
 
 const FullBlogPost = ({ post }) => {
-	const formatPublishDate = date => {
-		if (date instanceof Date && !isNaN(date)) {
-			return date.toISOString()
+	const renderContent = content => {
+		if (Array.isArray(content)) {
+			return content.map((section, index) => (
+				<div key={index}>
+					{section.section_title && <h2>{section.section_title}</h2>}
+					{section.key_takeaways && (
+						<ul>
+							{section.key_takeaways.map((takeaway, i) => (
+								<li key={i}>{takeaway}</li>
+							))}
+						</ul>
+					)}
+					{section.content && <MDXContent source={section.content} />}
+				</div>
+			))
 		}
-		// If it's a string, try to parse it
-		if (typeof date === 'string') {
-			const parsedDate = new Date(date)
-			if (!isNaN(parsedDate)) {
-				return parsedDate.toISOString()
-			}
-		}
-		// If all else fails, return a fallback string
-		return 'Invalid Date'
+		return <MDXContent source={content} />
 	}
 
 	return (
@@ -55,7 +62,7 @@ const FullBlogPost = ({ post }) => {
 			</header>
 
 			<div className='prose prose-lg max-w-none mb-8'>
-				<MDXContent source={post.content} />
+				{renderContent(post.content)}
 			</div>
 
 			<footer>
@@ -78,37 +85,6 @@ const FullBlogPost = ({ post }) => {
 					</section>
 				)}
 			</footer>
-
-			<section
-				className='mt-8 pt-8 border-t'
-				aria-labelledby='author-info'>
-				<h2 id='author-info' className='text-xl font-semibold mb-2'>
-					About the Author
-				</h2>
-				<div className='flex items-center space-x-4'>
-					{post.authorImageUrl ? (
-						<Image
-							src={post.authorImageUrl}
-							width={80}
-							height={80}
-							className='rounded-full'
-							alt={`Profile picture of ${post.author}`}
-						/>
-					) : (
-						<div
-							className='w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center text-3xl text-gray-600'
-							aria-label={`${post.author}'s initial`}>
-							{post.author[0].toUpperCase()}
-						</div>
-					)}
-					<div>
-						<p className='font-semibold'>{post.author}</p>
-						<p className='text-sm text-gray-600'>
-							{post.authorBio || 'No bio available'}
-						</p>
-					</div>
-				</div>
-			</section>
 		</article>
 	)
 }

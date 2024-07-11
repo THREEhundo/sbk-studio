@@ -35,3 +35,36 @@ export const convertToISOString = dateString => {
 	// Convert to ISO string
 	return date.toISOString()
 }
+
+export const calculateReadingTime = content => {
+	const countWordsInString = str => str.split(/\s+/).length
+
+	const countWordsInContent = item => {
+		if (typeof item === 'string') {
+			return countWordsInString(item)
+		}
+		if (Array.isArray(item)) {
+			return item.reduce(
+				(sum, element) => sum + countWordsInContent(element),
+				0
+			)
+		}
+		if (typeof item === 'object' && item !== null) {
+			let count = 0
+			if (item.content) {
+				count += countWordsInContent(item.content)
+			}
+			if (item.key_takeaways) {
+				count += countWordsInContent(item.key_takeaways)
+			}
+			if (item.section_title) {
+				count += countWordsInString(item.section_title)
+			}
+			return count
+		}
+		return 0
+	}
+
+	const totalWords = countWordsInContent(content)
+	return Math.ceil(totalWords / 200)
+}
