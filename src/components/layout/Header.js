@@ -14,8 +14,8 @@ const Header = async ({ dataSet, isHomepage = false }) => {
 	const firstObject = data[0]
 
 	return (
-		<header className='bg-neutral py-8 min-h-[calc(100vh-64px)] flex flex-col justify-between'>
-			<div className='container mx-auto px-4'>
+		<header className='responsive-container bg-neutral py-8 min-h-[calc(100vh-64px)] flex flex-col justify-between'>
+			<div className='mx-auto'>
 				<Placeholder
 					width={320}
 					height={240}

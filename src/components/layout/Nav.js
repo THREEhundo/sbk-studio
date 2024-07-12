@@ -61,7 +61,9 @@ export const Nav = () => {
 	)
 
 	return (
-		<nav className='container px-4 bg-neutral shadow-md h-16'>
+		<nav
+			id='top'
+			className='responsive-container px-4 bg-neutral shadow-md h-16'>
 			<div className='mx-auto'>
 				<div className='flex justify-between items-center py-4'>
 					<Link href='/' className='flex items-center'>

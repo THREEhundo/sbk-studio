@@ -1,9 +1,8 @@
 import React from 'react'
-import Placeholder from '../ui/Placeholder'
 
 const Footer = () => {
 	return (
-		<footer className='bg-neutral-900 text-primary-100 pt-4'>
+		<footer className='responsive-container bg-neutral-900 text-primary-100 pt-4'>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-4 items-center'>
 				<div className='col-span-1 md:col-span-2 md:text-left text-center font-hubot font-black'>
 					<p className='m-0 text-[14vw] md:text-[13vw] text-center leading-none'>
@@ -31,33 +30,41 @@ const Footer = () => {
 						</div>
 					</div>
 
-					<ul className='flex flex-wrap border-t border-secondary-500 justify-center  space-x-4 p-0 m-0'>
-						<li>
+					<ul className='flex border-t border-primary-500 justify-center p-0 m-0'>
+						<li className='p-1 md:p-2'>
 							<a
 								href='/about'
 								className='hover:text-secondary-500 transition-colors'>
 								About
 							</a>
 						</li>
-						<li>
+						<li className='p-1 md:p-2'>
 							<a
 								href='#portfolio'
 								className='hover:text-secondary-500 transition-colors'>
 								Portfolio
 							</a>
 						</li>
-						<li>
+						<li className='p-1 md:p-2'>
 							<a
 								href='/services'
 								className='hover:text-secondary-500 transition-colors'>
 								Services
 							</a>
 						</li>
-						<li>
+						<li className='p-1 md:p-2'>
 							<a
 								href='/blog'
 								className='hover:text-secondary-500 transition-colors'>
 								Blog
+							</a>
+						</li>
+						<li className='pl-1 pt-3 pr-0 pb-0 md:p-2 ml-auto'>
+							<a href='#top' className='inline-flex items-center'>
+								<span className='lg:hidden'>Top</span>
+								<span className='hidden lg:inline'>
+									Back Up Top
+								</span>
 							</a>
 						</li>
 					</ul>
