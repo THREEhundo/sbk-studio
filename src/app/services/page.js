@@ -7,7 +7,7 @@ import React from 'react'
 const Services = () => {
 	return (
 		<Layout>
-			<header>
+			<header className='responsive-container py-8'>
 				<h1>Services</h1>
 			</header>
 			<MainContainer>
