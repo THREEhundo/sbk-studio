@@ -29,36 +29,36 @@
 
 	/* Typography */
 	h1 {
-		@apply text-4xl font-bold pb-4 text-primary-500;
+		@apply text-4xl font-bold text-primary-500;
 	}
 
 	h2 {
-		@apply text-3xl font-semibold pb-3 text-primary-500;
+		@apply text-3xl font-semibold text-primary-500;
 	}
 
 	h3 {
-		@apply text-2xl font-semibold pb-2 text-primary-500;
+		@apply text-2xl font-semibold text-primary-500;
 	}
 
 	h4 {
-		@apply text-xl font-semibold pb-2 text-primary-500;
+		@apply text-xl font-semibold text-primary-500;
 	}
 
 	h5 {
-		@apply text-lg font-semibold pb-2 text-primary-500;
+		@apply text-lg font-semibold text-primary-500;
 	}
 
 	h6 {
-		@apply text-base font-semibold pb-2 text-primary-500;
+		@apply text-base font-semibold text-primary-500;
 	}
 
 	p {
-		@apply pb-4 text-primary-500;
+		@apply text-primary-500;
 	}
 
 	/* Links */
 	a {
-		@apply text-secondary-500 hover:text-secondary-900 transition-colors duration-200;
+		@apply text-primary-500 hover:text-secondary-900 transition-colors duration-200;
 	}
 
 	/* Lists */
@@ -394,6 +394,21 @@
 		@apply bg-gradient-to-r from-secondary-500 to-secondary-900;
 	}
 
+	.bg-fresh-breeze {
+		background: linear-gradient(220.55deg, #8fff85 0%, #39a0ff 100%);
+	}
+
+	.bg-dark-slate {
+		background: linear-gradient(220.55deg, #565656 0%, #181818 100%);
+	}
+
+	.gradient-text {
+		background-image: linear-gradient(220.55deg, #8fff85 0%, #39a0ff 100%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+
 	/* Hover effects */
 	.hover-lift {
 		@apply transition-transform duration-300 ease-in-out;
@@ -488,7 +503,7 @@
 	}
 
 	.responsive-container {
-		@apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+		@apply w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12;
 	}
 
 	/* Accessibility */
