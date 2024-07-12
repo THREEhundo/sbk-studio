@@ -17,7 +17,9 @@ const Button = ({
 			'bg-secondary-500 text-neutral hover:bg-secondary-900 focus:ring-secondary-500',
 		secondary:
 			'bg-primary-100 text-neutral hover:bg-primary-500 focus:ring-primary-500',
-		danger: 'bg-danger text-neutral hover:bg-opacity-90 focus:ring-danger'
+		danger: 'bg-danger text-neutral hover:bg-opacity-90 focus:ring-danger',
+		gradient:
+			'bg-fresh-breeze text-neutral hover:bg-secondary-900 focus:ring-secondary-500'
 	}
 
 	const sizes = {
