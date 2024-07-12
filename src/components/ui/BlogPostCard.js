@@ -6,12 +6,13 @@ import Link from 'next/link'
 const BlogPostCard = ({ post }) => {
 	return (
 		<Link href={`/blog/${post.id}`} className='block'>
+			<Placeholder width={320} height={240} type='image' />
 			<article
-				className='border-b pb-4 group hover:bg-gray-50 transition-colors duration-200'
+				className='border-b pb-4 group transition-colors duration-200'
 				aria-labelledby={`post-title-${post.id}`}>
 				<h2
 					id={`post-title-${post.id}`}
-					className='text-2xl font-semibold group-hover:text-blue-600 transition-colors duration-200'>
+					className='text-2xl font-semibold group-hover:text-secondary-500 transition-colors duration-200'>
 					{post.title}
 				</h2>
 				<div className='flex items-center space-x-2'>
@@ -25,27 +26,27 @@ const BlogPostCard = ({ post }) => {
 						/>
 					) : (
 						<div
-							className='w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-600'
+							className='w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-primary-500'
 							aria-hidden='true'>
 							<Placeholder width={40} height={40} type='icon' />
 						</div>
 					)}
 					<div>
-						<p className='text-sm text-gray-600'>
+						<p className='text-sm text-primary-500'>
 							<span className='sr-only'>Written by </span>
 							{post.author}
 						</p>
 						<time
-							dateTime={post.publishDate.toISOString()}
-							className='text-xs text-gray-500'>
+							dateTime={post.publishDate}
+							className='text-xs text-primary-500'>
 							{formatDate(post.publishDate)}
 						</time>
 					</div>
 				</div>
-				<p className='mt-2 text-gray-600 line-clamp-3'>
+				<p className='mt-2 text-primary-500 line-clamp-3'>
 					{post.excerpt}
 				</p>
-				<div className='mt-2 flex items-center text-sm text-gray-500 space-x-2'>
+				<div className='mt-2 flex items-center text-sm text-primary-500 space-x-2'>
 					<span aria-label='Estimated reading time'>
 						{post.readingTime} min read
 					</span>
@@ -54,7 +55,7 @@ const BlogPostCard = ({ post }) => {
 						{post.tags.map(tag => (
 							<li
 								key={tag}
-								className='bg-gray-200 px-2 py-1 rounded-full text-xs'>
+								className='bg-secondary-500 text-neutral px-2 py-1 rounded-full text-xs'>
 								{tag}
 							</li>
 						))}

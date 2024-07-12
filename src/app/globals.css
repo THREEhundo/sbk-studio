@@ -381,6 +381,10 @@
 		text-wrap: pretty;
 	}
 
+	.footer-title {
+		letter-spacing: -0.5rem;
+	}
+
 	/* Gradient text */
 	.text-gradient {
 		@apply text-transparent bg-clip-text;

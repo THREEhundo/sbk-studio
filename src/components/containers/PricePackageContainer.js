@@ -7,7 +7,7 @@ const PricePackageContainer = async () => {
 
 	return (
 		<section className='py-20 bg-neutral'>
-			<div className='container mx-auto px-4'>
+			<div className='mx-auto'>
 				<h2 className='text-4xl font-bold text-primary-500 text-center mb-12'>
 					Our Pricing Plans
 				</h2>

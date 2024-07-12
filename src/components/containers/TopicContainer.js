@@ -8,7 +8,7 @@ const TopicContainer = async ({ dataSet }) => {
 
 	return (
 		<section className='py-16 bg-neutral'>
-			<div className='container mx-auto px-4'>
+			<div className='mx-auto'>
 				{data.map(topic => (
 					<div key={topic.id} className='mb-24 last:mb-0'>
 						<div className='grid grid-rows-1 md:grid-rows-2 gap-12 items-center'>

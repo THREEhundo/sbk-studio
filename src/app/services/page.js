@@ -8,7 +8,9 @@ const Services = () => {
 	return (
 		<Layout>
 			<header className='responsive-container py-8'>
-				<h1>Services</h1>
+				<h1 className='text-3xl md:text-4xl lg:text-5xl font-bold pb-4 text-primary-500'>
+					Services
+				</h1>
 			</header>
 			<MainContainer>
 				<TopicContainer dataSet='services' />
