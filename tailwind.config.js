@@ -55,6 +55,12 @@ module.exports = {
 			},
 			borderRadius: {
 				'4xl': '2rem'
+			},
+			gradients: {
+				'fresh-breeze':
+					'linear-gradient(220.55deg, #8FFF85 0%, #39A0FF 100%)',
+				'dark-slate':
+					'linear-gradient(220.55deg, #565656 0%, #181818 100%)'
 			}
 		}
 	},
