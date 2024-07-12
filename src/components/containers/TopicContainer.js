@@ -11,7 +11,7 @@ const TopicContainer = async ({ dataSet }) => {
 			<div className='container mx-auto px-4'>
 				{data.map(topic => (
 					<div key={topic.id} className='mb-24 last:mb-0'>
-						<div className='grid grid-cols-1 md:grid-cols-2 gap-12 items-center'>
+						<div className='grid grid-rows-1 md:grid-rows-2 gap-12 items-center'>
 							<div className='order-2 md:order-1'>
 								<h2 className='text-3xl font-bold text-primary-500 mb-6 transition-colors duration-300 hover:text-secondary-500'>
 									{topic.title}
