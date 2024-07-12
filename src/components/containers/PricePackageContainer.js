@@ -12,14 +12,15 @@ const PricePackageContainer = async () => {
 					Our Pricing Plans
 				</h2>
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-					{pricing.packages.map(bundle => (
+					{pricing.packages.map((bundle, index) => (
 						<PriceCard
 							key={bundle.id}
+							index={index}
 							id={bundle.id}
 							title={bundle.title}
 							price={bundle.price}
 							description={bundle.description}
-							features={bundle.list}
+							list={bundle.list}
 							button={bundle.button}
 							className={
 								bundle.id === 'feature-package'
