@@ -14,7 +14,9 @@ const IconCard = ({ id, title, description, icon, className }) => {
 						className='text-secondary-500'
 					/>
 				) : (
-					<div className='w-10 h-10 bg-secondary-500 rounded-full flex items-center justify-center'>
+					<div
+						key={id}
+						className='w-10 h-10 bg-secondary-500 rounded-full flex items-center justify-center'>
 						<span className='text-neutral text-xl font-bold'>
 							{title[0]}
 						</span>
