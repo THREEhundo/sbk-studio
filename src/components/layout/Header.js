@@ -20,7 +20,6 @@ const Header = async ({ dataSet, isHomepage = false, isBlogPage = false }) => {
 	if (featureArticle && featureArticle.publishDate) {
 		featureArticle.publishDate = formatDate(featureArticle.publishDate)
 	}
-	console.log(featureArticle.publishDate)
 
 	const excerpt = content => {
 		const stripHtml = html =>
