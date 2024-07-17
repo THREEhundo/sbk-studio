@@ -75,9 +75,9 @@ const ContactForm = () => {
 		<form
 			onSubmit={handleSubmit}
 			className='max-w-lg mx-auto bg-neutral-800 p-8 rounded-lg shadow-xl'>
-			<h2 className='text-3xl font-bold text-primary-500 mb-6'>
+			<h1 className='text-3xl font-bold text-primary-500 mb-6'>
 				Contact Us
-			</h2>
+			</h1>
 			<div className='mb-4'>
 				<label htmlFor='name' className='block text-primary-100 mb-2'>
 					Name

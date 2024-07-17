@@ -6,7 +6,6 @@ export default function ContactPage() {
 	return (
 		<Layout>
 			<section className='container'>
-				<h1>Contact Us</h1>
 				<ContactForm />
 			</section>
 		</Layout>
