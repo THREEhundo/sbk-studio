@@ -1,6 +1,7 @@
 import React from 'react'
 import Placeholder from './Placeholder'
 import ButtonWrapper from '../containers/ButtonWrapper'
+import UpChevronSVG from '../icons/UpChevronSVG'
 
 const getGradientClass = index => {
 	const gradients = ['bg-dark-slate', 'bg-fresh-breeze']
@@ -37,12 +38,7 @@ const PriceCard = ({
 							<li
 								key={`pc-${index}`}
 								className='flex items-start'>
-								<Placeholder
-									width={25}
-									height={25}
-									type='icon'
-									className='mr-2 flex-shrink-0'
-								/>
+								<UpChevronSVG className='mr-2 flex-shrink-0' />
 								<span className='text-primary-500'>
 									{feature.title}
 								</span>

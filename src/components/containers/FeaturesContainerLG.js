@@ -13,7 +13,8 @@ const FeaturesContainerLG = async ({ dataSet }) => {
 					id={feature.id}
 					title={feature.title}
 					description={feature.description}
-					image={feature.icon}
+					image={feature.image}
+					alt={feature.alt}
 				/>
 			))}
 		</div>

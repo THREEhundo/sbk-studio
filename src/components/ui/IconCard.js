@@ -7,6 +7,7 @@ const IconCard = ({ id, title, description, icon, className }) => {
 			<div className='mb-4'>
 				{icon ? (
 					<Image
+						key={id}
 						src={icon}
 						width={40}
 						height={40}

@@ -1,7 +1,8 @@
 import React from 'react'
 import Placeholder from './Placeholder'
+import Image from 'next/image'
 
-const Card = ({ id, title, description, image, featured, list }) => {
+const Card = ({ id, title, description, image, featured, list, alt }) => {
 	console.log('featured', featured)
 	return (
 		<div
@@ -10,10 +11,11 @@ const Card = ({ id, title, description, image, featured, list }) => {
 			<div className='p-6'>
 				{image && (
 					<div className='mb-4'>
-						<Placeholder
+						<Image
+							src={image}
+							alt={alt}
 							width={320}
 							height={240}
-							type='image'
 							className='w-full h-auto rounded-lg'
 						/>
 					</div>

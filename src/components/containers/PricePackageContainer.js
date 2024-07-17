@@ -8,9 +8,6 @@ const PricePackageContainer = async () => {
 	return (
 		<section className='py-20 bg-neutral'>
 			<div className='mx-auto'>
-				<h2 className='text-4xl font-bold text-primary-500 text-center mb-12'>
-					Our Pricing Plans
-				</h2>
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
 					{pricing.packages.map((bundle, index) => (
 						<PriceCard
@@ -24,7 +21,7 @@ const PricePackageContainer = async () => {
 							button={bundle.button}
 							className={
 								bundle.id === 'feature-package'
-									? 'md:scale-105 md:shadow-xl'
+									? 'md:scale-105 md:shadow-xl '
 									: ''
 							}
 						/>

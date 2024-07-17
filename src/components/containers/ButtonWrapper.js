@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import Button from '../ui/Button'
+import Link from 'next/link'
 
 const ButtonWrapper = ({
 	children,
@@ -9,14 +10,15 @@ const ButtonWrapper = ({
 	size,
 	disabled,
 	className,
+	href,
 	...props
 }) => {
 	const handleClick = () => {
 		console.log(`Clicked: ${children}`)
-		if (onClick) onClick()
+		if (onClick) onClick(e)
 	}
 
-	return (
+	const buttonElement = (
 		<Button
 			onClick={handleClick}
 			variant={variant}
@@ -27,6 +29,16 @@ const ButtonWrapper = ({
 			{children}
 		</Button>
 	)
+
+	if (href) {
+		return (
+			<Link href={href} passHref legacyBehavior>
+				{buttonElement}
+			</Link>
+		)
+	}
+
+	return buttonElement
 }
 
 export default ButtonWrapper

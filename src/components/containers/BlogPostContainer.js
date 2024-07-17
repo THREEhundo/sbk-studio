@@ -5,18 +5,7 @@ import BlogPostCard from '../ui/BlogPostCard'
 
 const BlogPostContainer = async ({ dataSet }) => {
 	const data = await getData(`${dataSet}.json`)
-	const blogPosts = data.map(post =>
-		createBlogPost(
-			post.id,
-			post.title,
-			post.content,
-			post.author,
-			post.publishDate,
-			post.tags,
-			post.image,
-			post.feature
-		)
-	)
+	const blogPosts = getBlogPosts(data)
 
 	return (
 		<section className='responsive-container py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
@@ -27,5 +16,20 @@ const BlogPostContainer = async ({ dataSet }) => {
 		</section>
 	)
 }
+
+export const getBlogPosts = dataSet =>
+	dataSet.map(item =>
+		createBlogPost(
+			item.id,
+			item.title,
+			item.content,
+			item.author,
+			item.publishDate,
+			item.tags,
+			item.authorImageUrl,
+			item.image,
+			item.altTag
+		)
+	)
 
 export default BlogPostContainer

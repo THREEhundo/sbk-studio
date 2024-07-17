@@ -6,7 +6,7 @@ import React from 'react'
 const Blog = () => {
 	return (
 		<Layout>
-			<Header dataSet={'blog-posts'} isBlogPage={true} />
+			<Header dataSet='blog-posts' isBlogPage={true} />
 			<BlogPostContainer dataSet='blog-posts' />
 		</Layout>
 	)

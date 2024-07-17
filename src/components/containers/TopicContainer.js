@@ -1,7 +1,7 @@
-import { getData } from '@/lib/getData'
 import React from 'react'
 import FeaturesContainerSM from './FeaturesContainerSM'
-import Placeholder from '../ui/Placeholder'
+import Image from 'next/image'
+import { getData } from '@/lib/getData'
 
 const TopicContainer = async ({ dataSet }) => {
 	const data = await getData(`${dataSet}.json`)
@@ -20,10 +20,14 @@ const TopicContainer = async ({ dataSet }) => {
 									{topic.description}
 								</p>
 								<div className='transform transition-transform duration-300 hover:scale-105'>
-									<Placeholder
-										width={320}
-										height={240}
-										type='image'
+									<Image
+										src={topic.image}
+										alt={
+											topic.alt ||
+											`Illustration for ${topic.title}`
+										}
+										width={2464}
+										height={1856}
 										className='rounded-lg shadow-lg w-full h-auto'
 									/>
 								</div>

@@ -4,6 +4,9 @@ import React from 'react'
 import Placeholder from '../ui/Placeholder'
 import ButtonWrapper from '../containers/ButtonWrapper'
 import BlogPostCard from '../ui/BlogPostCard'
+import createBlogPost from '@/lib/createBlogPost'
+import { getBlogPosts } from '../containers/BlogPostContainer'
+import Image from 'next/image'
 
 const Header = async ({ dataSet, isHomepage = false, isBlogPage = false }) => {
 	const file = `${dataSet}.json`
@@ -15,20 +18,7 @@ const Header = async ({ dataSet, isHomepage = false, isBlogPage = false }) => {
 
 	const firstObject = data[0]
 
-	const featureArticle = data.find(article => article.feature)
-
-	if (featureArticle && featureArticle.publishDate) {
-		featureArticle.publishDate = formatDate(featureArticle.publishDate)
-	}
-
-	const excerpt = content => {
-		const stripHtml = html =>
-			typeof html === 'string' ? html.replace(/<[^>]+>/g, '') : ''
-		const plainText = stripHtml(content)
-		return plainText.length > 150
-			? plainText.substring(0, 150) + '...'
-			: plainText
-	}
+	const featureArticle = data.find(article => article.feature === true)
 
 	return (
 		<header className='responsive-container bg-neutral py-8 min-h-[calc(100vh-64px)] flex flex-col justify-between'>
@@ -37,14 +27,16 @@ const Header = async ({ dataSet, isHomepage = false, isBlogPage = false }) => {
 					<h1 className='text-3xl md:text-4xl lg:text-5xl font-bold pb-4 text-primary-500'>
 						Blog
 					</h1>
+
 					{featureArticle && <BlogPostCard post={featureArticle} />}
 				</div>
 			) : (
 				<div className='mx-auto'>
-					<Placeholder
-						width={320}
-						height={240}
-						type='image'
+					<Image
+						src={firstObject.image}
+						width={2048}
+						height={2048}
+						alt={`Glowing translucent balls on a wet surface`}
 						className='pb-4'
 					/>
 					<div className='w-full md:w-2/3 mb-4'>
@@ -55,7 +47,10 @@ const Header = async ({ dataSet, isHomepage = false, isBlogPage = false }) => {
 							{firstObject.description}
 						</p>
 						{isHomepage && (
-							<ButtonWrapper variant='primary' size='large'>
+							<ButtonWrapper
+								variant='primary'
+								size='large'
+								href='/contact'>
 								Learn More
 							</ButtonWrapper>
 						)}

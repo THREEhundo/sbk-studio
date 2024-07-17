@@ -4,9 +4,15 @@ import { formatDate } from '../utils/utils'
 import Link from 'next/link'
 
 const BlogPostCard = ({ post }) => {
+	console.log(post)
 	return (
 		<Link href={`/blog/${post.id}`} className='block'>
-			<Placeholder width={320} height={240} type='image' />
+			<Image
+				src={post.image}
+				alt={post.altTag || `Image for ${post.title}`}
+				width={2464}
+				height={1856}
+			/>
 			<article
 				className='border-b pb-4 group transition-colors duration-200'
 				aria-labelledby={`post-title-${post.id}`}>
@@ -22,13 +28,13 @@ const BlogPostCard = ({ post }) => {
 							width={40}
 							height={40}
 							className='rounded-full'
-							alt=''
+							alt='Author Image'
 						/>
 					) : (
 						<div
 							className='w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-primary-500'
 							aria-hidden='true'>
-							<Placeholder width={40} height={40} type='icon' />
+							{/*<Placeholder width={40} height={40} type='icon' />*/}
 						</div>
 					)}
 					<div>

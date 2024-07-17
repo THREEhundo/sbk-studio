@@ -7,9 +7,13 @@ const createBlogPost = (
 	author,
 	publishDate,
 	tags = [],
-	authorImageUrl = null
+	authorImageUrl = null,
+	image = null,
+	altTag = ''
 ) => {
+	// Parse the date, providing a fallback if it's invalid
 	const date = new Date(publishDate)
+	const validDate = !isNaN(date.getTime()) ? date : new Date()
 
 	const formatContent = content => {
 		if (typeof content === 'string') {
@@ -37,7 +41,6 @@ const createBlogPost = (
 			}
           `
 					} else {
-						// Subsequent objects: section title and content
 						return `
             <h2>${section.sectionTitle || `Section ${index}`}</h2>
             <p>${section.content || ''}</p>
@@ -54,8 +57,11 @@ const createBlogPost = (
 		title,
 		content: formatContent(content),
 		author,
-		publishDate: date,
-		tags,
+		authorImageUrl,
+		publishDate: validDate,
+		tags: Array.isArray(tags) ? tags : [],
+		image: image || null, // Ensure image is null if falsy
+		altTag: altTag || '', // Ensure altTag is an empty string if falsy
 		get formatDate() {
 			return date.toLocaleDateString('en-US', {
 				year: 'numeric',
@@ -88,10 +94,12 @@ const createBlogPost = (
 				title: this.title,
 				excerpt: this.excerpt,
 				author: this.author,
-				authorImageUrl,
+				authorImageUrl: this.authorImageUrl,
 				publishDate: date,
 				readingTime: this.readingTime,
-				tags: this.tags
+				tags: this.tags,
+				image: this.image,
+				altTag: this.altTag
 			}
 		}
 	}
