@@ -1,11 +1,12 @@
+'use client'
 import React from 'react'
 
 const Footer = () => {
 	return (
-		<footer className='responsive-container bg-neutral-900 text-primary-100 pt-4'>
+		<footer className='responsive-container bg-neutral-900 text-primary-100 pt-4 w-full'>
 			<div className='grid grid-rows-1 md:grid-rows-3 gap-4 items-center'>
-				<div className='row-span-1 md:row-span-2 md:text-left text-center font-hubot font-black'>
-					<p className='m-0 text-[14vw] md:text-[12.8vw] text-center leading-none font-bold'>
+				<div className='row-span-1 md:row-span-2 w-full overflow-hidden'>
+					<p className='text-[14vw] sm:text-[13vw] md:text-[14vw] lg:text-[14vw] xl:text-[12.6vw] font-bold text-center leading-none font-hubot whitespace-nowrap'>
 						SBK STUDIO
 					</p>
 				</div>
