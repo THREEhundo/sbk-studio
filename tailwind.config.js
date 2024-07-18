@@ -62,7 +62,47 @@ module.exports = {
 				'dark-slate':
 					'linear-gradient(220.55deg, #565656 0%, #181818 100%)'
 			}
-		}
+		},
+		typography: theme => ({
+			DEFAULT: {
+				css: {
+					color: theme('colors.white'),
+					a: {
+						color: theme('colors.secondary.500'),
+						'&:hover': {
+							color: theme('colors.secondary.900')
+						}
+					},
+					h1: {
+						color: theme('colors.white')
+					},
+					h2: {
+						color: theme('colors.white')
+					},
+					h3: {
+						color: theme('colors.white')
+					},
+					h4: {
+						color: theme('colors.white')
+					},
+					h5: {
+						color: theme('colors.white')
+					},
+					h6: {
+						color: theme('colors.white')
+					},
+					strong: {
+						color: theme('colors.white')
+					},
+					code: {
+						color: theme('colors.white')
+					},
+					figcaption: {
+						color: theme('colors.primary.100')
+					}
+				}
+			}
+		})
 	},
 	plugins: [
 		require('@tailwindcss/forms'),

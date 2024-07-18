@@ -23,8 +23,8 @@ const PriceCard = ({
 			id={id}
 			className={`bg-neutral-800 ${getGradientClass(
 				index
-			)} rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl ${className}`}>
-			<div className='p-8'>
+			)} flex flex-col justify-between rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl ${className}`}>
+			<div className='p-8 h-full flex flex-col justify-between'>
 				<h3 className='text-2xl font-bold text-primary-500 mb-4'>
 					{title}
 				</h3>
@@ -52,10 +52,10 @@ const PriceCard = ({
 				)}
 				{button && (
 					<ButtonWrapper
-						onClick='handleClick'
 						variant='gradient'
 						size='large'
-						className='w-full'>
+						className='w-full'
+						href='/contact'>
 						Get Started
 					</ButtonWrapper>
 				)}

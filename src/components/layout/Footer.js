@@ -6,7 +6,7 @@ const Footer = () => {
 		<footer className='responsive-container bg-neutral-900 text-primary-100 pt-4 w-full'>
 			<div className='grid grid-rows-1 md:grid-rows-3 gap-4 items-center'>
 				<div className='row-span-1 md:row-span-2 w-full overflow-hidden'>
-					<p className='text-[14vw] sm:text-[13vw] md:text-[14vw] lg:text-[14vw] xl:text-[12.6vw] font-bold text-center leading-none font-hubot whitespace-nowrap'>
+					<p className='text-[14vw] sm:text-[13vw] md:text-[14vw] lg:text-[14vw] xl:text-[9.8vw] font-bold text-center leading-none font-hubot whitespace-nowrap'>
 						SBK STUDIO
 					</p>
 				</div>
@@ -26,7 +26,7 @@ const Footer = () => {
 							<a
 								href='mailto:hello@sbkstudio.com'
 								className='hover:text-secondary-500 transition-colors'>
-								hello@sbkstudio.com
+								hello@sbkstudio.tech
 							</a>
 						</div>
 					</div>

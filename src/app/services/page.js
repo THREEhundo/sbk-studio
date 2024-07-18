@@ -21,7 +21,7 @@ const Services = async () => {
 		<Layout>
 			<Header dataSet={'services'} />
 
-			<main className='bg-neutral'>
+			<main className='bg-neutral responsive-container'>
 				{/* Services Overview Section */}
 				<Section title='Our Services' className='text-center'>
 					{/* Services introduction */}
@@ -59,7 +59,10 @@ const Services = async () => {
 						Let&apos;s discuss how our services can be tailored to
 						meet your unique business needs and goals.
 					</p>
-					<ButtonWrapper variant='primary' size='large'>
+					<ButtonWrapper
+						href='/contact'
+						variant='primary'
+						size='large'>
 						Get in Touch
 					</ButtonWrapper>
 				</Section>

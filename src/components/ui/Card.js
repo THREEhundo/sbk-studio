@@ -2,13 +2,22 @@ import React from 'react'
 import Placeholder from './Placeholder'
 import Image from 'next/image'
 
-const Card = ({ id, title, description, image, featured, list, alt }) => {
+const Card = ({
+	id,
+	title,
+	description,
+	image,
+	featured,
+	list,
+	alt,
+	className
+}) => {
 	console.log('featured', featured)
 	return (
 		<div
 			id={id}
 			className='bg-neutral-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl'>
-			<div className='p-6'>
+			<div className={`p-6 ${className}`}>
 				{image && (
 					<div className='mb-4'>
 						<Image
@@ -48,7 +57,7 @@ const Card = ({ id, title, description, image, featured, list, alt }) => {
 					</ul>
 				)}
 				{featured && (
-					<div className='mt-4 inline-block bg-secondary-500 text-neutral px-3 py-1 rounded-full text-sm font-semibold'>
+					<div className='mt-4 inline-block bg-secondary-500 text-neutral px-3 py-1 rounded-full max-w-max text-sm font-semibold'>
 						Featured
 					</div>
 				)}

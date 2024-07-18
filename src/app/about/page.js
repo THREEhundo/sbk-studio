@@ -66,7 +66,10 @@ const About = () => {
 						Let&apos;s discuss how we can craft a digital solution
 						tailored to your business needs.
 					</p>
-					<ButtonWrapper variant='gradient' size='large'>
+					<ButtonWrapper
+						href='/contact'
+						variant='gradient'
+						size='large'>
 						Contact Us
 					</ButtonWrapper>
 				</section>

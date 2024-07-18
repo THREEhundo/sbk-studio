@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Placeholder from './Placeholder'
 import { formatDate } from '../utils/utils'
 import Link from 'next/link'
+import AuthorAvatar from './AuthorAvatar'
 
 const BlogPostCard = ({ post }) => {
 	console.log(post)
@@ -23,12 +24,9 @@ const BlogPostCard = ({ post }) => {
 				</h2>
 				<div className='flex items-center space-x-2'>
 					{post.authorImageUrl ? (
-						<Image
-							src={post.authorImageUrl}
-							width={40}
-							height={40}
-							className='rounded-full'
-							alt='Author Image'
+						<AuthorAvatar
+							imageUrl={post.authorImageUrl}
+							size={50}
 						/>
 					) : (
 						<div
