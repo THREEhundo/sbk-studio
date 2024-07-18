@@ -23,7 +23,8 @@ const Button = React.forwardRef(
 				'bg-primary-100 text-neutral hover:bg-primary-500 focus:ring-primary-500',
 			danger: 'bg-danger text-neutral hover:bg-opacity-90 focus:ring-danger',
 			gradient:
-				'bg-fresh-breeze text-neutral hover:bg-secondary-900 focus:ring-secondary-500'
+				'bg-fresh-breeze text-neutral hover:bg-secondary-900 focus:ring-secondary-500',
+			opaque: 'bg-opaque text-primary-500 border border-white focus:ring-primary-500'
 		}
 
 		const sizes = {

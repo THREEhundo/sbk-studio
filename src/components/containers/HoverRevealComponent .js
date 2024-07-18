@@ -65,7 +65,7 @@ const HoverRevealComponent = ({ title, description, button = false }) => {
 		setTimeout(() => {
 			const height = calculateInitialHeight()
 			setInitialHeight(`${height}px`)
-			gsap.set(container, { height: height, backgroundColor: '#1B1F27' })
+			gsap.set(container, { height: height, backgroundColor: '#3d4557' })
 			gsap.set(content, { yPercent: 100, opacity: 0 })
 		}, 0)
 
@@ -78,17 +78,12 @@ const HoverRevealComponent = ({ title, description, button = false }) => {
 			.to(container, {
 				duration: 0.5,
 				height: calculateExpandedHeight,
-				backgroundColor: '#8FFF85',
+				backgroundColor: '#3d4557',
 				backgroundImage:
 					'linear-gradient(220.55deg, #8FFF85 0%, #39A0FF 100%)'
 			})
 			.to(title, { color: '#FFFFFF', duration: 0.3 }, 0)
 			.to(content, { yPercent: 0, opacity: 1, duration: 0.3 }, 0.5)
-			.to(
-				buttonElement,
-				{ color: '#aeff00', backgroundColor: '#1b1f27', duration: 0.3 },
-				0.5
-			)
 
 		// Collapse animation
 		collapseTl
@@ -99,14 +94,9 @@ const HoverRevealComponent = ({ title, description, button = false }) => {
 				{
 					duration: 0.5,
 					height: calculateInitialHeight,
-					backgroundColor: '#1B1F27',
+					backgroundColor: '#3d4557',
 					backgroundImage: 'none'
 				},
-				0.3
-			)
-			.to(
-				buttonElement,
-				{ color: '', backgroundColor: '', duration: 0.3 },
 				0.3
 			)
 
@@ -142,11 +132,12 @@ const HoverRevealComponent = ({ title, description, button = false }) => {
 				{title}
 			</h2>
 			<div ref={contentRef} className='pt-6'>
-				<p className='pb-6 text-neutral'>{description}</p>
+				<p className='pb-6 text-primary-500'>{description}</p>
 				{button && (
 					<ButtonWrapper
 						ref={buttonRef}
-						className='py-2 px-4 bg-neutral text-secondary-900-500 rounded hover:bg-primary-100 hover:text-neutral transition-colors duration-300'>
+						className='py-2 px-4'
+						variant='opaque'>
 						Discover More
 					</ButtonWrapper>
 				)}
