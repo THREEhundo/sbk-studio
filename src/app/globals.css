@@ -175,6 +175,11 @@
 	.card-text {
 		@apply text-primary-100;
 	}
+	/* Hidden Cards */
+	.hover-card {
+		background-color: #3d4557;
+		border: 1px solid #5d6883;
+	}
 
 	/* Navigation Items */
 	.nav-link {
