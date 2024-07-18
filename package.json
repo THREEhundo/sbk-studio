@@ -1,28 +1,29 @@
 {
-  "name": "sbk-studio",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/forms": "^0.5.7",
-    "@tailwindcss/typography": "^0.5.13",
-    "gsap": "^3.12.5",
-    "next": "14.2.4",
-    "next-mdx-remote": "^5.0.0",
-    "react": "^18",
-    "react-dom": "^18"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.4",
-    "postcss": "^8.4.39",
-    "tailwindcss": "^3.4.4"
-  }
+	"name": "sbk-studio",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"postbuild": "next-sitemap",
+		"start": "next start"
+	},
+	"dependencies": {
+		"@tailwindcss/aspect-ratio": "^0.4.2",
+		"@tailwindcss/forms": "^0.5.7",
+		"@tailwindcss/typography": "^0.5.13",
+		"gsap": "^3.12.5",
+		"next": "14.2.4",
+		"next-mdx-remote": "^5.0.0",
+		"next-sitemap": "^4.2.3",
+		"react": "^18",
+		"react-dom": "^18"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.19",
+		"eslint": "^8",
+		"eslint-config-next": "14.2.4",
+		"postcss": "^8.4.39",
+		"tailwindcss": "^3.4.4"
+	}
 }
