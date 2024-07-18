@@ -10,6 +10,7 @@ import { getData } from '@/lib/getData'
 import Image from 'next/image'
 import ServiceCard from '@/components/ui/ServiceCard'
 import UpChevronSVG from '@/components/icons/UpChevronSVG'
+import HoverRevealComponent from '@/components/containers/HoverRevealComponent '
 
 // Component: Services (Page Component)
 // Purpose: Renders the main services page
@@ -32,12 +33,18 @@ const Services = async () => {
 					</p>
 
 					{/* Service highlights grid */}
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12'>
+					<div className='grid grid-row-1 md:grid-row-2 lg:grid-row-3 gap-8 mb-12'>
 						{servicesData.slice(0, 3).map((service, index) => (
-							<ServiceCard
+							//<ServiceCard
+							//	key={service.id}
+							//	title={service.title}
+							//	description={service.description}
+							///>
+							<HoverRevealComponent
 								key={service.id}
 								title={service.title}
 								description={service.description}
+								button
 							/>
 						))}
 					</div>
