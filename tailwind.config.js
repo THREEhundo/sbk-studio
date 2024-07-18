@@ -17,7 +17,8 @@ module.exports = {
 					900: '#87FA14'
 				},
 				'danger': '#e3342f',
-				'neutral': '#1B1F27'
+				'neutral': '#1B1F27',
+				'opaque': '#222731'
 			},
 			fontFamily: {
 				'mona': ['Mona Sans', 'sans-serif'],
