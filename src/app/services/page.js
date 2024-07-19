@@ -17,10 +17,11 @@ import HoverRevealComponent from '@/components/containers/HoverRevealComponent '
 const Services = async () => {
 	// Fetch services data
 	const servicesData = await getData('services.json')
+	const specificID = 'Web Design & Development Services for Small Businesses'
 
 	return (
 		<Layout>
-			<Header dataSet={'services'} />
+			<Header dataSet={'services'} specificId={specificID} />
 
 			<main className='bg-neutral responsive-container'>
 				{/* Services Overview Section */}
