@@ -16,31 +16,32 @@ const PriceCard = ({
 	description,
 	list = [],
 	button,
-	className
+	className,
+	...card
 }) => {
 	return (
 		<div
-			id={id}
+			//id={id}
 			className={`bg-neutral-800 ${getGradientClass(
 				index
 			)} flex flex-col justify-between rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl ${className}`}>
 			<div className='p-8 h-full flex flex-col justify-between'>
 				<h3 className='text-2xl font-bold text-primary-500 mb-4'>
-					{title}
+					{card.name}
 				</h3>
 				<div className='text-4xl font-bold text-secondary-500 mb-4'>
-					{price}
+					{card.price}
 				</div>
-				<p className='text-primary-500 mb-6'>{description}</p>
-				{Array.isArray(list) && list.length > 0 ? (
+				<p className='text-primary-500 mb-6'>{card.description}</p>
+				{Array.isArray(card.features) && card.features.length > 0 ? (
 					<ul className='space-y-3 mb-8'>
-						{list.map((feature, index) => (
+						{card.features.map((feature, index) => (
 							<li
 								key={`pc-${index}`}
 								className='flex items-start'>
 								<UpChevronSVG className='mr-2 flex-shrink-0' />
 								<span className='text-primary-500'>
-									{feature.title}
+									{feature}
 								</span>
 							</li>
 						))}

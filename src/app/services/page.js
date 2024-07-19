@@ -7,9 +7,7 @@ import TopicContainer from '@/components/containers/TopicContainer'
 import Section from '@/components/layout/Section'
 import ButtonWrapper from '@/components/containers/ButtonWrapper'
 import { getData } from '@/lib/getData'
-import Image from 'next/image'
 import ServiceCard from '@/components/ui/ServiceCard'
-import UpChevronSVG from '@/components/icons/UpChevronSVG'
 import HoverRevealComponent from '@/components/containers/HoverRevealComponent '
 
 // Component: Services (Page Component)

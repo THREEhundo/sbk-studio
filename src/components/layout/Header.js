@@ -1,11 +1,6 @@
 import { getData } from '@/lib/getData'
-import { formatDate } from '@/components/utils/utils'
 import React from 'react'
-import ButtonWrapper from '../containers/ButtonWrapper'
 import BlogPostCard from '../ui/BlogPostCard'
-import createBlogPost from '@/lib/createBlogPost'
-import { getBlogPosts } from '../containers/BlogPostContainer'
-import Image from 'next/image'
 import AboveTheFold from './AboveTheFold'
 
 const Header = async ({ dataSet, isBlogPage = false, specificId }) => {
@@ -22,8 +17,6 @@ const Header = async ({ dataSet, isBlogPage = false, specificId }) => {
 	const featureArticle = data.find(article => article.feature === true)
 
 	const specificObject = data1.find(item => item.pageTitle === specificId)
-	console.log('specific object', specificObject)
-	console.log(data1)
 
 	return (
 		<header className='responsive-container bg-neutral py-8 min-h-[calc(100vh-64px)] flex flex-col justify-between'>
