@@ -8,23 +8,12 @@ const getGradientClass = index => {
 
 	return gradients[index % gradients.length]
 }
-const PriceCard = ({
-	id,
-	title,
-	index,
-	price,
-	description,
-	list = [],
-	button,
-	className,
-	...card
-}) => {
+const PriceCard = ({ index, list = [], className, ...card }) => {
 	return (
 		<div
-			//id={id}
 			className={`bg-neutral-800 ${getGradientClass(
 				index
-			)} flex flex-col justify-between rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl ${className}`}>
+			)} flex flex-col justify-between rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl max-w-96 ${className}`}>
 			<div className='p-8 h-full flex flex-col justify-between'>
 				<h3 className='text-2xl font-bold text-primary-500 mb-4'>
 					{card.name}
@@ -51,7 +40,7 @@ const PriceCard = ({
 						No features available.
 					</p>
 				)}
-				{button && (
+				{card.button && (
 					<ButtonWrapper
 						variant='gradient'
 						size='large'
