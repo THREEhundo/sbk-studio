@@ -1,11 +1,16 @@
 import Layout from '@/components/Layout'
 import Main from '@/components/Main'
-import Metadata from '@/components/Metadata'
 import Header from '@/components/layout/Header'
 import CardSection from '@/components/ui/CardSection'
 import SectionHeader from '@/components/ui/SectionHeader'
 import UseScrollHandler from '@/components/utils/useScrollHandler'
 import { getData } from '@/lib/getData'
+
+export const metadata = {
+	title: 'SBK STUDIO | Small Business Web Design & Development | Affordable Custom Websites',
+	description:
+		'Custom web design and development services tailored for small businesses. Affordable packages with lightning-fast, mobile-friendly, SEO-optimized websites starting at $199/mo.'
+}
 
 export default async function Home() {
 	const specificId =
@@ -15,7 +20,6 @@ export default async function Home() {
 	const homeObj = data.find(item => item.pageTitle === specificId)
 	return (
 		<>
-			<Metadata title='SBK Studio' />
 			<Layout>
 				<UseScrollHandler />
 				<Header specificId={specificId} dataSet={'homepage'} />
@@ -26,6 +30,8 @@ export default async function Home() {
 						title={section.h2}
 						description={section.content}
 						cards={section.h3s}
+						imgUrl={section.image}
+						imageAlt={section.imageAlt}
 					/>
 				))}
 				{/* ON SECOND SECTION */}
