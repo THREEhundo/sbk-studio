@@ -6,7 +6,16 @@ import PricePackageContainer from '../containers/PriceCardsContainer'
 import IconCardsContainer from '../containers/IconCardsContainer'
 
 const CardSection = React.memo(
-	({ index, title, description, cards, footerContent, imgUrl, imageAlt }) => {
+	({
+		index,
+		title,
+		description,
+		cards,
+		footerContent,
+		imgUrl,
+		imageAlt,
+		imageType
+	}) => {
 		const renderCardList = () => {
 			if (!cards) return null
 
@@ -39,7 +48,8 @@ const CardSection = React.memo(
 					title={title}
 					description={description}
 					imgUrl={imgUrl}
-					imageAlt={imageAlt}>
+					imageAlt={imageAlt}
+					imageType={imageType}>
 					{renderCardList()}
 				</SectionHeader>
 

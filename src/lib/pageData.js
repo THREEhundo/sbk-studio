@@ -26,6 +26,15 @@ export async function getPageData() {
 	}
 }
 
+export async function getPortfolioData() {
+	try {
+		return await getData('projects')
+	} catch (error) {
+		console.error('Error fetching about portfolio data:', error)
+		notFound()
+	}
+}
+
 export async function getPageMetaData(pageTitle) {
 	const seoData = await getData('seo')
 

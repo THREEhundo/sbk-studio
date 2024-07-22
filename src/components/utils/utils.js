@@ -67,3 +67,9 @@ export const calculateReadingTime = content => {
 	const totalWords = countWordsInContent(content)
 	return Math.ceil(totalWords / 200)
 }
+
+export const isMp4 = filename => {
+	return (
+		typeof filename === 'string' && filename.toLowerCase().endsWith('.mp4')
+	)
+}

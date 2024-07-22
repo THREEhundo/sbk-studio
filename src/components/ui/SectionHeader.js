@@ -1,7 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
 
-const SectionHeader = ({ title, description, imgUrl, imageAlt, children }) => {
+const SectionHeader = ({
+	title,
+	description,
+	imgUrl,
+	imageAlt,
+	imageType,
+	children
+}) => {
 	const hasChildren = React.Children.count(children) > 0
 	const gridClasses =
 		'grid gap-4 p-4 md:grid-cols-4 md:grid-rows-[repeat(4,minmax(0,1fr))]'
@@ -16,13 +23,13 @@ const SectionHeader = ({ title, description, imgUrl, imageAlt, children }) => {
 		? 'md:col-start-3 md:col-end-5 md:row-start-1 md:row-end-3'
 		: 'flex-1 md:max-w-1/2'
 	return (
-		<div className={layoutClasses}>
-			<div className={contentClasses}>
+		<div className={''}>
+			<div className={''}>
 				<h2 className='text-2xl font-bold mb-4'>{title}</h2>
 				<p className='mb-4'>{description}</p>
 			</div>
 			{imgUrl && (
-				<div className={imageClasses}>
+				<div className={''}>
 					<Image
 						width={2048}
 						height={2048}
@@ -35,14 +42,14 @@ const SectionHeader = ({ title, description, imgUrl, imageAlt, children }) => {
 			{hasChildren && (
 				<div
 					className={
-						imgUrl
+						imgUrl && imageType === 'IconCard'
 							? 'md:col-start-1 md:col-end-5 md:row-start-3 md:row-end-8 grid grid-cols-2 gap-4'
 							: 'flex flex-wrap gap-4 w-full'
 					}>
 					{React.Children.map(children, (child, index) => {
 						const childClasses = [
 							'bg-gray-200 rounded-lg p-4',
-							imgUrl
+							imgUrl && imageType === 'IconCard'
 								? index % 2 === 0
 									? 'md:col-start-1 md:col-end-2'
 									: 'md:col-start-2 md:col-end-3'

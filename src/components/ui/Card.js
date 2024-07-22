@@ -1,6 +1,8 @@
 import React from 'react'
 import Placeholder from './Placeholder'
 import Image from 'next/image'
+import { isMp4 } from '../utils/utils'
+import GifImage from './GifImage'
 
 const Card = ({
 	id,
@@ -13,6 +15,7 @@ const Card = ({
 	alt,
 	className
 }) => {
+	isMp4(image)
 	return (
 		<div
 			key={key}
@@ -21,13 +24,23 @@ const Card = ({
 			<div className={`p-6 ${className}`}>
 				{image && (
 					<div className='mb-4'>
-						<Image
-							src={image}
-							alt={alt}
-							width={320}
-							height={240}
-							className='w-full h-auto rounded-lg'
-						/>
+						{isMp4(image) ? (
+							<GifImage
+								src={image}
+								alt={alt}
+								width={320}
+								height={320}
+								className='w-full h-auto rounded-lg'
+							/>
+						) : (
+							<Image
+								src={image}
+								alt={alt}
+								width={320}
+								height={240}
+								className='w-full h-auto rounded-lg'
+							/>
+						)}
 					</div>
 				)}
 				<h2 className='text-2xl font-bold text-primary-500 mb-2'>

@@ -5,14 +5,14 @@ import Header from '@/components/layout/Header'
 import CardSection from '@/components/ui/CardSection'
 import { notFound } from 'next/navigation'
 import { generateSEOMetadata } from '@/app/metadata'
-import { getPageData } from '@/lib/pageData'
+import { getPageData, getPortfolioData } from '@/lib/pageData'
+import PortfolioListContainer from '@/components/containers/PortfolioListContainer'
 
 const HOME_PAGE_TITLE =
 	'SBK STUDIO | Small Business Web Design & Development | Affordable Custom Websites'
 
 async function getHomeData() {
 	const pageData = await getPageData()
-	//console.log('Fetched page data:', JSON.stringify(pageData, null, 2)) // Log the entire pageData
 
 	if (!Array.isArray(pageData)) {
 		console.error('Page data is not an array:', pageData)
@@ -44,6 +44,17 @@ async function getHomeData() {
 	return homeObj
 }
 
+async function getPortfolio() {
+	const portfolioData = await getPortfolioData()
+
+	if (!Array.isArray(portfolioData)) {
+		console.error(`Portfolio data is not an array:`, portfolioData)
+		return null
+	}
+
+	return portfolioData
+}
+
 export async function generateMetadata() {
 	const homeObj = await getHomeData()
 	if (!homeObj) return {}
@@ -64,7 +75,7 @@ export async function generateMetadata() {
 
 async function HomeContent() {
 	const homeObj = await getHomeData()
-
+	const portfolioData = await getPortfolio()
 	if (!homeObj) {
 		notFound()
 	}
@@ -72,6 +83,7 @@ async function HomeContent() {
 	return (
 		<>
 			<Header specificId={HOME_PAGE_TITLE} heroData={homeObj} />
+			<PortfolioListContainer portfolioData={portfolioData} />
 			{homeObj.sections.map((section, index) => (
 				<CardSection
 					key={index}
@@ -79,8 +91,9 @@ async function HomeContent() {
 					title={section.h2}
 					description={section.content}
 					cards={section.h3s || []}
-					imgUrl={section.image || '/path/to/default/image.jpg'}
-					imageAlt={section.imageAlt || 'Default alt text'}
+					imgUrl={section.image}
+					imageAlt={section.imageAlt}
+					imageType={section.type}
 				/>
 			))}
 		</>
