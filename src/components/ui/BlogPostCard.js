@@ -5,7 +5,6 @@ import Link from 'next/link'
 import AuthorAvatar from './AuthorAvatar'
 
 const BlogPostCard = ({ post }) => {
-	console.log(post)
 	return (
 		<Link href={`/blog/${post.id}`} className='block'>
 			<Image

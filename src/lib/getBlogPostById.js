@@ -20,8 +20,6 @@ export const getBlogPostById = async id => {
 			return null
 		}
 
-		console.log('post', post)
-
 		// Convert the publishDate to ISO string format
 		const isoPublishDate = convertToISOString(post.publishDate)
 

@@ -19,7 +19,6 @@ const ButtonWrapper = React.forwardRef(
 		ref
 	) => {
 		const handleClick = e => {
-			console.log(`Clicked: ${children}`)
 			if (onClick) onClick(e)
 		}
 

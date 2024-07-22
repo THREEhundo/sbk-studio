@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 const Card = ({
 	id,
+	key,
 	title,
 	description,
 	image,
@@ -12,9 +13,9 @@ const Card = ({
 	alt,
 	className
 }) => {
-	console.log('featured', featured)
 	return (
 		<div
+			key={key}
 			id={id}
 			className='bg-neutral-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl'>
 			<div className={`p-6 ${className}`}>

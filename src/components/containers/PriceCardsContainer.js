@@ -1,10 +1,6 @@
 import React from 'react'
-import PriceCard from '../ui/PriceCard'
-import { getData } from '@/lib/getData'
 
-const PricePackageContainer = async ({ children }) => {
-	const pricing = await getData('website-packages.json')
-
+const PriceCardContainer = async ({ children }) => {
 	return (
 		<section className='py-20 responsive-container'>
 			<div className='mx-auto'>
@@ -16,4 +12,4 @@ const PricePackageContainer = async ({ children }) => {
 	)
 }
 
-export default PricePackageContainer
+export default PriceCardContainer

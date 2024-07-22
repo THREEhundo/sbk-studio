@@ -4,11 +4,25 @@ import Header from '@/components/layout/Header'
 import FeaturesContainerLG from '@/components/containers/FeaturesContainerLG'
 import ButtonWrapper from '@/components/containers/ButtonWrapper'
 import Image from 'next/image'
+import { getPageData } from '@/lib/pageData'
+import { notFound } from 'next/navigation'
 
-const About = () => {
+const About = async () => {
+	const data = await getPageData()
+	const aboutId = 'About Us | Small Business Web Design & Development'
+	const aboutObj = data.find(
+		item =>
+			item.pageTitle ===
+			'About Us | Small Business Web Design & Development'
+	)
+
+	if (!aboutObj) {
+		notFound()
+	}
+
 	return (
 		<Layout>
-			<Header dataSet='about' />
+			<Header specificId={aboutId} heroData={aboutObj} />
 
 			<main className='responsive-container px-4 py-8 space-y-16'>
 				{/* Hero Section */}
@@ -54,7 +68,7 @@ const About = () => {
 					<p className='text-xl text-primary-100 mb-8 text-center'>
 						Elevate Your Online Presence, Amplify Your Success
 					</p>
-					<FeaturesContainerLG dataSet='about' />
+					<FeaturesContainerLG dataSet={aboutObj} />
 				</section>
 
 				{/* Call to Action Section */}

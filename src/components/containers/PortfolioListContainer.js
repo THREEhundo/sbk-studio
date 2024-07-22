@@ -1,5 +1,4 @@
-import { getData } from '@/lib/getData'
-import React from 'react'
+import { getData } from '../lib/serverUtils'
 import Card from '../ui/Card'
 
 const PortfolioListContainer = async () => {

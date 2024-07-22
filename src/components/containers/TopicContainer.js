@@ -1,20 +1,17 @@
 import React from 'react'
 import FeaturesContainerSM from './FeaturesContainerSM'
 import Image from 'next/image'
-import { getData } from '@/lib/getData'
 
 const TopicContainer = async ({ dataSet }) => {
-	const data = await getData(`${dataSet}.json`)
-
 	return (
 		<section className='py-16 bg-neutral'>
 			<div className='mx-auto'>
-				{data.map(topic => (
+				{dataSet.map(topic => (
 					<div key={topic.id} className='mb-24 last:mb-0'>
 						<div className='grid grid-rows-1 md:grid-rows-2 gap-12 items-center'>
 							<div className='order-2 md:order-1'>
 								<h2 className='text-3xl font-bold text-primary-500 mb-6 transition-colors duration-300 hover:text-secondary-500'>
-									{topic.title}
+									{topic.h2}
 								</h2>
 								<p className='text-lg text-primary-100 mb-8 leading-relaxed'>
 									{topic.description}
@@ -24,7 +21,7 @@ const TopicContainer = async ({ dataSet }) => {
 										src={topic.image}
 										alt={
 											topic.alt ||
-											`Illustration for ${topic.title}`
+											`Illustration for ${topic.h2}`
 										}
 										width={2464}
 										height={1856}

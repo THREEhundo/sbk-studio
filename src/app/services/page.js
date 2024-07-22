@@ -1,25 +1,31 @@
-// File: /src/app/services/page.js
-
 import React from 'react'
 import Layout from '@/components/Layout'
 import Header from '@/components/layout/Header'
 import TopicContainer from '@/components/containers/TopicContainer'
 import Section from '@/components/layout/Section'
 import ButtonWrapper from '@/components/containers/ButtonWrapper'
-import { getData } from '@/lib/getData'
-import ServiceCard from '@/components/ui/ServiceCard'
 import HoverRevealComponent from '@/components/containers/HoverRevealComponent '
+import { getPageData } from '@/lib/pageData'
+import { notFound } from 'next/navigation'
 
-// Component: Services (Page Component)
-// Purpose: Renders the main services page
 const Services = async () => {
 	// Fetch services data
-	const servicesData = await getData('services.json')
+	const data = await getPageData()
 	const specificID = 'Web Design & Development Services for Small Businesses'
 
+	const servicesObj = data.find(
+		item =>
+			item.pageTitle ===
+			'Web Design & Development Services for Small Businesses'
+	)
+
+	if (!servicesObj) {
+		notFound()
+	}
+	console.log(servicesObj.sections.title)
 	return (
 		<Layout>
-			<Header dataSet={'services'} specificId={specificID} />
+			<Header heroData={servicesObj} specificId={specificID} />
 
 			<main className='bg-neutral responsive-container'>
 				{/* Services Overview Section */}
@@ -33,16 +39,11 @@ const Services = async () => {
 
 					{/* Service highlights grid */}
 					<div className='grid grid-row-1 md:grid-row-2 lg:grid-row-3 gap-8 mb-12'>
-						{servicesData.slice(0, 3).map((service, index) => (
-							//<ServiceCard
-							//	key={service.id}
-							//	title={service.title}
-							//	description={service.description}
-							///>
+						{servicesObj.sections.map((service, index) => (
 							<HoverRevealComponent
 								key={service.id}
-								title={service.title}
-								description={service.description}
+								title={service.h2}
+								description={service.content}
 								button
 							/>
 						))}
@@ -55,7 +56,7 @@ const Services = async () => {
 				</Section>
 
 				{/* Detailed services information */}
-				<TopicContainer dataSet='services' />
+				<TopicContainer dataSet={servicesObj.sections} />
 
 				{/* Call-to-action Section */}
 				<Section

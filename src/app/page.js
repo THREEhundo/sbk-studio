@@ -1,41 +1,76 @@
+import { Suspense } from 'react'
 import Layout from '@/components/Layout'
-import Main from '@/components/Main'
+import UseScrollHandler from '@/components/utils/useScrollHandler'
 import Header from '@/components/layout/Header'
 import CardSection from '@/components/ui/CardSection'
-import SectionHeader from '@/components/ui/SectionHeader'
-import UseScrollHandler from '@/components/utils/useScrollHandler'
-import { getData } from '@/lib/getData'
+import { notFound } from 'next/navigation'
+import { getPageData } from '@/lib/pageData'
 
-export const metadata = {
-	title: 'SBK STUDIO | Small Business Web Design & Development | Affordable Custom Websites',
-	description:
-		'Custom web design and development services tailored for small businesses. Affordable packages with lightning-fast, mobile-friendly, SEO-optimized websites starting at $199/mo.'
+export async function generateMetadata() {
+	const data = await getPageData()
+	const homeObj = data.find(
+		item =>
+			item.pageTitle ===
+			'Small Business Web Design & Development | Affordable Custom Websites'
+	)
+
+	if (!homeObj) {
+		return {
+			title: 'Home',
+			description: 'Default description'
+		}
+	}
+
+	return {
+		title: homeObj.pageTitle,
+		description: homeObj.metaDescription
+	}
 }
 
-export default async function Home() {
-	const specificId =
-		'Small Business Web Design & Development | Affordable Custom Websites'
-	const file = `seo.json`
-	const data = await getData(file)
-	const homeObj = data.find(item => item.pageTitle === specificId)
+async function HomeContent() {
+	const data = await getPageData()
+	const homeObj = data.find(
+		item =>
+			item.pageTitle ===
+			'Small Business Web Design & Development | Affordable Custom Websites'
+	)
+
+	if (!homeObj) {
+		notFound()
+	}
+	console.log(
+		data,
+		`DATADATADATADATADATADATADATADATADATADATADATADATADATADATADATADATADATADATADATADATADATADATADATADATADATADATA`
+	)
+
 	return (
 		<>
-			<Layout>
-				<UseScrollHandler />
-				<Header specificId={specificId} dataSet={'homepage'} />
-				{/*<Main />*/}
-				{homeObj.sections.map((section, index) => (
-					<CardSection
-						key={index}
-						title={section.h2}
-						description={section.content}
-						cards={section.h3s}
-						imgUrl={section.image}
-						imageAlt={section.imageAlt}
-					/>
-				))}
-				{/* ON SECOND SECTION */}
-			</Layout>
+			<Header
+				specificId={`'Small Business Web Design & Development | Affordable Custom Websites'`}
+				heroData={homeObj}
+			/>
+			{homeObj.sections.map((section, index) => (
+				<CardSection
+					key={index}
+					index={index}
+					title={section.h2}
+					description={section.content}
+					cards={section.h3s || []}
+					imgUrl={section.image || '/path/to/default/image.jpg'}
+					imageAlt={section.imageAlt || 'Default alt text'}
+				/>
+			))}
 		</>
+	)
+}
+
+export default function Home() {
+	return (
+		<Layout>
+			<UseScrollHandler />
+			<Suspense fallback={<div>Loading...</div>}>
+				<HomeContent />
+			</Suspense>
+		</Layout>
 	)
 }

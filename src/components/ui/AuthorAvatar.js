@@ -11,6 +11,7 @@ const AuthorAvatar = ({ imageUrl, altText, size = 48 }) => {
 				height={size}
 				className='object-cover object-center absolute top-[-0.6rem] left-0'
 				alt={altText || 'Author Image'}
+				priority={true}
 			/>
 		</div>
 	)

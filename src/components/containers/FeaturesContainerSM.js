@@ -1,9 +1,9 @@
-import { getData } from '@/lib/getData'
 import React from 'react'
 import IconCard from '../ui/IconCard'
+import { getPageData } from '@/lib/pageData'
 
-const FeaturesContainerSM = async ({ dataSet }) => {
-	const data = await getData(`${dataSet}.json`)
+const FeaturesContainerSM = async () => {
+	const data = await getPageData()
 
 	// Flatten the nested structure
 	const items = data.flatMap(service => service.list || [])

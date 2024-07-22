@@ -1,11 +1,10 @@
-import createBlogPost from '@/lib/createBlogPost'
-import { getData } from '@/lib/getData'
 import React from 'react'
+import createBlogPost from '@/lib/createBlogPost'
 import BlogPostCard from '../ui/BlogPostCard'
+import { getPageData } from '@/lib/pageData'
 
 const BlogPostContainer = async ({ dataSet }) => {
-	const data = await getData(`${dataSet}.json`)
-	const blogPosts = getBlogPosts(data)
+	const blogPosts = getBlogPosts(dataSet)
 
 	return (
 		<section className='responsive-container py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>

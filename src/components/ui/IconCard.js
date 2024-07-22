@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const IconCard = ({ id, title, description, icon, className }) => {
 	return (
-		<div id={id} className={`flex flex-col items-start ${className}`}>
+		<div id={id}>
 			<div className='mb-4'>
 				{icon ? (
 					<Image

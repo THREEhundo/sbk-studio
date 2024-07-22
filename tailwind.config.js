@@ -50,6 +50,15 @@ module.exports = {
 				extrabold: '800',
 				black: '900'
 			},
+			maxWidth: {
+				'1/2': '50%',
+				'1/3': '33.333333%',
+				'1/4': '25%',
+				'3/4': '75%',
+				'2/3': '66.666667%',
+				'1/6': '16.666667%',
+				'5/6': '83.333333%'
+			},
 			spacing: {
 				'128': '32rem',
 				'144': '36rem'
@@ -62,6 +71,9 @@ module.exports = {
 					'linear-gradient(220.55deg, #8FFF85 0%, #39A0FF 100%)',
 				'dark-slate':
 					'linear-gradient(220.55deg, #565656 0%, #181818 100%)'
+			},
+			width: {
+				'calc-50-minus-2': 'calc(50% - 0.5rem)'
 			}
 		},
 		typography: theme => ({

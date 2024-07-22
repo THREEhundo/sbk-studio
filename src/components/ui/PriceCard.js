@@ -14,7 +14,7 @@ const PriceCard = ({ index, list = [], className, ...card }) => {
 			className={`bg-neutral-800 ${getGradientClass(
 				index
 			)} flex flex-col justify-between rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl max-w-96 ${className}`}>
-			<div className='p-8 h-full flex flex-col justify-between'>
+			<div className='p-8  h-full flex flex-col justify-between'>
 				<h3 className='text-2xl font-bold text-primary-500 mb-4'>
 					{card.name}
 				</h3>

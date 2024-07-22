@@ -1,7 +1,7 @@
 // File: /src/app/blog/[id]/page.js
 
 import { getBlogPostById } from '@/lib/getBlogPostById'
-import FullBlogPost from '@/components/FullBlogPost'
+import Article from '@/components/Article'
 import Layout from '@/components/Layout'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
@@ -41,9 +41,7 @@ const BlogPostPage = async ({ params }) => {
 		<Layout>
 			<main className='bg-neutral min-h-screen'>
 				<div className='responsive-container py-12'>
-					<article className='bg-neutral-800 rounded-lg shadow-xl overflow-hidden'>
-						<FullBlogPost post={post} />
-					</article>
+					<Article post={post} />
 					<div className='mt-8 text-center'>
 						<a
 							href='/blog'

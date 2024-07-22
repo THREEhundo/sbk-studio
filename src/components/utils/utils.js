@@ -21,7 +21,6 @@ export const capitalize = string =>
 
 export const convertToISOString = dateString => {
 	// Split the date string into components
-	console.log('Date String', dateString)
 	const [month, day, year] = dateString.split('/')
 
 	// Create a new Date object
