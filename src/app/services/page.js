@@ -13,7 +13,6 @@ const SERVICES_PAGE_TITLE =
 	'SBK STUDIO | Web Design & Development Services for Small Businesses'
 async function getServicesData() {
 	const pageData = await getPageData()
-	//console.log('Fetched page data:', JSON.stringify(pageData, null, 2)) // Log the entire pageData
 
 	if (!Array.isArray(pageData)) {
 		console.error('Page data is not an array:', pageData)
