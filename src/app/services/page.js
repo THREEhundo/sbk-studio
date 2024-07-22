@@ -7,25 +7,83 @@ import ButtonWrapper from '@/components/containers/ButtonWrapper'
 import HoverRevealComponent from '@/components/containers/HoverRevealComponent '
 import { getPageData } from '@/lib/pageData'
 import { notFound } from 'next/navigation'
+import { generateSEOMetadata } from '../metadata'
+
+const SERVICES_PAGE_TITLE =
+	'SBK STUDIO | Web Design & Development Services for Small Businesses'
+async function getServicesData() {
+	const pageData = await getPageData()
+	//console.log('Fetched page data:', JSON.stringify(pageData, null, 2)) // Log the entire pageData
+
+	if (!Array.isArray(pageData)) {
+		console.error('Page data is not an array:', pageData)
+		return null
+	}
+
+	// Try to find an exact match first
+	let servicesObj = pageData.find(
+		item => item.pageTitle === SERVICES_PAGE_TITLE
+	)
+
+	// If no exact match, try a case-insensitive partial match
+	if (!servicesObj) {
+		servicesObj = pageData.find(
+			item =>
+				item.pageTitle &&
+				item.pageTitle
+					.toLowerCase()
+					.includes('small business web design')
+		)
+	}
+
+	if (!servicesObj) {
+		console.error(
+			'Home object not found. Available titles:',
+			pageData.map(item => item.pageTitle)
+		)
+		return null
+	}
+
+	return servicesObj
+}
+
+export async function generateMetadata() {
+	const servicesObj = await getServicesData()
+	if (!servicesObj) return {}
+
+	const seoMetadata = generateSEOMetadata(
+		servicesObj.pageTitle,
+		servicesObj.metaDescription
+	)
+	return {
+		...seoMetadata,
+		openGraph: {
+			...seoMetadata.openGraph,
+			url: 'https://yourdomain.com/',
+			type: 'website'
+		}
+	}
+}
 
 const Services = async () => {
 	// Fetch services data
 	const data = await getPageData()
-	const specificID = 'Web Design & Development Services for Small Businesses'
+	const specificID =
+		'SBK STUDIO | Web Design & Development Services for Small Businesses'
 
 	const servicesObj = data.find(
 		item =>
 			item.pageTitle ===
-			'Web Design & Development Services for Small Businesses'
+			'SBK STUDIO | Web Design & Development Services for Small Businesses'
 	)
 
 	if (!servicesObj) {
 		notFound()
 	}
-	console.log(servicesObj.sections.title)
+
 	return (
 		<Layout>
-			<Header heroData={servicesObj} specificId={specificID} />
+			<Header heroData={servicesObj} specificId={SERVICES_PAGE_TITLE} />
 
 			<main className='bg-neutral responsive-container'>
 				{/* Services Overview Section */}

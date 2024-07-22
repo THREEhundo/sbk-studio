@@ -25,3 +25,22 @@ export async function getPageData() {
 		notFound()
 	}
 }
+
+export async function getPageMetaData(pageTitle) {
+	const seoData = await getData('seo')
+
+	const data = seoData.find(item => item.pageTitle === pageTitle)
+
+	// Assuming seoData is an object with pageTitle as keys
+	if (data[pageTitle]) {
+		console.log(data[pageTitle])
+		return data[pageTitle]
+	}
+
+	console.warn(`No data found for page title: ${pageTitle}`)
+	return {
+		pageTitle: 'SBK Studio | Web Design for Small Businesses',
+		metaDescription:
+			'Custom web design and development services tailored for small businesses.'
+	}
+}

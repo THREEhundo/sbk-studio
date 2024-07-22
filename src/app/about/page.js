@@ -6,6 +6,61 @@ import ButtonWrapper from '@/components/containers/ButtonWrapper'
 import Image from 'next/image'
 import { getPageData } from '@/lib/pageData'
 import { notFound } from 'next/navigation'
+import { generateSEOMetadata } from '../metadata'
+
+const ABOUT_PAGE_TITLE =
+	'SBK STUDIO | About Us | Small Business Web Design & Development'
+async function getServicesData() {
+	const pageData = await getPageData()
+	//console.log('Fetched page data:', JSON.stringify(pageData, null, 2)) // Log the entire pageData
+
+	if (!Array.isArray(pageData)) {
+		console.error('Page data is not an array:', pageData)
+		return null
+	}
+
+	// Try to find an exact match first
+	let aboutObj = pageData.find(item => item.pageTitle === ABOUT_PAGE_TITLE)
+
+	// If no exact match, try a case-insensitive partial match
+	if (!aboutObj) {
+		aboutObj = pageData.find(
+			item =>
+				item.pageTitle &&
+				item.pageTitle
+					.toLowerCase()
+					.includes('small business web design')
+		)
+	}
+
+	if (!aboutObj) {
+		console.error(
+			'Home object not found. Available titles:',
+			pageData.map(item => item.pageTitle)
+		)
+		return null
+	}
+
+	return aboutObj
+}
+
+export async function generateMetadata() {
+	const aboutObj = await getServicesData()
+	if (!aboutObj) return {}
+
+	const seoMetadata = generateSEOMetadata(
+		aboutObj.pageTitle,
+		aboutObj.metaDescription
+	)
+	return {
+		...seoMetadata,
+		openGraph: {
+			...seoMetadata.openGraph,
+			url: 'https://yourdomain.com/',
+			type: 'website'
+		}
+	}
+}
 
 const About = async () => {
 	const data = await getPageData()
@@ -13,7 +68,7 @@ const About = async () => {
 	const aboutObj = data.find(
 		item =>
 			item.pageTitle ===
-			'About Us | Small Business Web Design & Development'
+			'SBK STUDIO | About Us | Small Business Web Design & Development'
 	)
 
 	if (!aboutObj) {
