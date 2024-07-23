@@ -1,5 +1,4 @@
 import React from 'react'
-import Placeholder from './Placeholder'
 import Image from 'next/image'
 import { isMp4 } from '../utils/utils'
 import GifImage from './GifImage'
