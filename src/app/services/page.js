@@ -107,7 +107,7 @@ const Services = async () => {
 					</div>
 
 					{/* CTA button */}
-					<ButtonWrapper variant='secondary' size='large'>
+					<ButtonWrapper variant='primary' size='large'>
 						Explore All Services
 					</ButtonWrapper>
 				</Section>
