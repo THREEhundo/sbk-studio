@@ -14,7 +14,7 @@ const Button = React.forwardRef(
 		ref
 	) => {
 		const baseStyles =
-			'font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2'
+			'font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 btn-glow'
 
 		const variants = {
 			primary:

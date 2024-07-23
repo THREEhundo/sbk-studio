@@ -145,6 +145,10 @@
 	.btn-outline {
 		@apply btn border-2 border-secondary-500 text-secondary-500 hover:bg-secondary-500 hover:text-neutral focus:ring-secondary-500;
 	}
+	.btn-glow:hover {
+		color: rgba(27, 31, 39, 1);
+		box-shadow: 0 5px 15px rgba(145, 92, 182, 0.4);
+	}
 
 	/* Form Inputs */
 	.form-input {
