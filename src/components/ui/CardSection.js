@@ -11,6 +11,7 @@ const CardSection = React.memo(
 		title,
 		description,
 		cards,
+		content2,
 		footerContent,
 		imgUrl,
 		imageAlt,
@@ -53,7 +54,12 @@ const CardSection = React.memo(
 					{renderCardList()}
 				</SectionHeader>
 
-				{footerContent && <SectionFooter content={footerContent} />}
+				{footerContent && (
+					<SectionFooter
+						content={footerContent}
+						content2={content2}
+					/>
+				)}
 			</section>
 		)
 	}
