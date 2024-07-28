@@ -5,7 +5,6 @@ import GifImage from './GifImage'
 
 const Card = ({
 	id,
-	key,
 	title,
 	description,
 	image,
@@ -17,7 +16,6 @@ const Card = ({
 	isMp4(image)
 	return (
 		<div
-			key={key}
 			id={id}
 			className='bg-neutral-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl flex flex-col flex-grow'>
 			<div className={`p-6 ${className}`}>

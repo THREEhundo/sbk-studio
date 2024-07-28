@@ -7,7 +7,6 @@ import IconCardsContainer from '../containers/IconCardsContainer'
 
 const CardSection = React.memo(
 	({
-		index,
 		title,
 		description,
 		cards,

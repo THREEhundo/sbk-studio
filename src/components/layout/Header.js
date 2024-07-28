@@ -3,12 +3,7 @@ import BlogPostCard from '../ui/BlogPostCard'
 import AboveTheFold from './AboveTheFold'
 import { getHeaderData } from '@/lib/pageData'
 
-const Header = async ({
-	isBlogPage = false,
-	specificId,
-	heroData,
-	featureArticle
-}) => {
+const Header = async ({ isBlogPage = false, heroData, featureArticle }) => {
 	try {
 		const headerData = await getHeaderData()
 
