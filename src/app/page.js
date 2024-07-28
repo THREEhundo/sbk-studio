@@ -87,7 +87,6 @@ async function HomeContent() {
 			{homeObj.sections.map((section, index) => (
 				<CardSection
 					key={index}
-					index={index}
 					title={section.h2}
 					description={section.content}
 					cards={section.h3s || []}
