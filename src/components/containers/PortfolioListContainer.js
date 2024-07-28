@@ -14,7 +14,7 @@ const PortfolioListContainer = async ({ portfolioData }) => {
 					image={project.image}
 					alt={project.alt}
 					featured={project.featured}
-					className='flex flex-col justify-between min-h-64'
+					className='flex flex-col h-full'
 				/>
 			))}
 		</section>
