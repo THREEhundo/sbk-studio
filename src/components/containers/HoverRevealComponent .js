@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import ButtonWrapper from './ButtonWrapper'
 
-const HoverRevealComponent = ({ title, description, button = false }) => {
+const HoverRevealComponent = ({ title, content, content2, button = false }) => {
 	const containerRef = useRef(null)
 	const contentRef = useRef(null)
 	const titleRef = useRef(null)
@@ -82,13 +82,13 @@ const HoverRevealComponent = ({ title, description, button = false }) => {
 				backgroundImage:
 					'linear-gradient(220.55deg, #8FFF85 0%, #39A0FF 100%)'
 			})
-			.to(title, { color: '#FFFFFF', duration: 0.3 }, 0)
+			//.to(title, { color: '#FFFFFF', duration: 0.3 }, 0)
 			.to(content, { yPercent: 0, opacity: 1, duration: 0.3 }, 0.5)
 
 		// Collapse animation
 		collapseTl
 			.to(content, { yPercent: 100, opacity: 0, duration: 0.3 })
-			.to(title, { color: '#FFFFFF', duration: 0.3 }, 0.3)
+			//.to(title, { color: '#FFFFFF', duration: 0.3 }, 0.3)
 			.to(
 				container,
 				{
@@ -128,11 +128,18 @@ const HoverRevealComponent = ({ title, description, button = false }) => {
 			ref={containerRef}
 			className='w-full p-6 relative overflow-hidden rounded-lg hover-card'
 			style={{ height: initialHeight }}>
-			<h2 ref={titleRef} className='text-2xl font-bold text-primary-500'>
+			<h2
+				ref={titleRef}
+				className='text-2xl font-bold text-center text-primary-500'>
 				{title}
 			</h2>
 			<div ref={contentRef} className='pt-6'>
-				<p className='pb-6 text-primary-500'>{description}</p>
+				<p className='pb-6 text-center text-primary-500'>{content}</p>
+				{content2 && (
+					<p className='pb-6 text-center text-primary-500'>
+						{content2}
+					</p>
+				)}
 				{button && (
 					<ButtonWrapper
 						ref={buttonRef}
