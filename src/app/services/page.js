@@ -8,6 +8,7 @@ import HoverRevealComponent from '@/components/containers/HoverRevealComponent '
 import { getPageData } from '@/lib/pageData'
 import { notFound } from 'next/navigation'
 import { generateSEOMetadata } from '../metadata'
+import CardSection from '@/components/ui/CardSection'
 
 const SERVICES_PAGE_TITLE =
 	'SBK STUDIO | Web Design & Development Services for Small Businesses'
@@ -66,36 +67,31 @@ export async function generateMetadata() {
 
 const Services = async () => {
 	// Fetch services data
-	const data = await getPageData()
-	const specificID =
-		'SBK STUDIO | Web Design & Development Services for Small Businesses'
-
-	const servicesObj = data.find(
-		item =>
-			item.pageTitle ===
-			'SBK STUDIO | Web Design & Development Services for Small Businesses'
-	)
+	const servicesObj = await getServicesData()
+	const specificID = servicesObj.pageTitle
 
 	if (!servicesObj) {
 		notFound()
 	}
 
+	console.log(servicesObj.sections.map(x => x.h2))
+
 	return (
 		<Layout>
-			<Header heroData={servicesObj} specificId={SERVICES_PAGE_TITLE} />
+			<Header heroData={servicesObj} specificId={specificID} />
 
 			<main className='bg-neutral responsive-container'>
 				{/* Services Overview Section */}
-				<Section title='Our Services' className='text-center'>
-					{/* Services introduction */}
-					<p className='text-xl text-primary-100 max-w-3xl mx-auto mb-12'>
+				{/*<Section title='Our Services' className='text-center'>*/}
+				{/* Services introduction */}
+				{/*<p className='text-xl text-primary-100 max-w-3xl mx-auto mb-12'>
 						At SBK Studio, we offer a comprehensive suite of web
 						development and design services tailored to elevate your
 						online presence and drive your business forward.
-					</p>
+					</p>*/}
 
-					{/* Service highlights grid */}
-					<div className='grid grid-row-1 md:grid-row-2 lg:grid-row-3 gap-8 mb-12'>
+				{/* Service highlights grid */}
+				{/*<div className='grid grid-row-1 md:grid-row-2 lg:grid-row-3 gap-8 mb-12'>
 						{servicesObj.sections.map((service, index) => (
 							<HoverRevealComponent
 								key={service.id}
@@ -104,19 +100,29 @@ const Services = async () => {
 								button
 							/>
 						))}
-					</div>
+					</div>*/}
 
-					{/* CTA button */}
-					<ButtonWrapper variant='primary' size='large'>
+				{/* CTA button */}
+				{/*<ButtonWrapper variant='primary' size='large'>
 						Explore All Services
-					</ButtonWrapper>
-				</Section>
+					</ButtonWrapper>*/}
+				{/*</Section>*/}
+				<div className='grid grid-row-1 md:grid-row-2 lg:grid-row-3 gap-8 mb-12'>
+					{servicesObj.sections.map((section, index) => (
+						<HoverRevealComponent
+							key={section.id}
+							title={section.h2}
+							content={section.content}
+							content2={section.content2}
+						/>
+					))}
+				</div>
 
-				{/* Detailed services information */}
+				{/*Detailed services information
 				<TopicContainer dataSet={servicesObj.sections} />
 
 				{/* Call-to-action Section */}
-				<Section
+				{/*<Section
 					title='Ready to Elevate Your Online Presence?'
 					className='text-center bg-neutral-800'>
 					<p className='text-xl text-primary-100 mb-8'>
@@ -129,7 +135,7 @@ const Services = async () => {
 						size='large'>
 						Get in Touch
 					</ButtonWrapper>
-				</Section>
+				</Section>*/}
 			</main>
 		</Layout>
 	)
