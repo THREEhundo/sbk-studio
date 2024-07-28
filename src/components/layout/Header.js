@@ -17,7 +17,7 @@ const Header = async ({
 		}
 
 		return (
-			<header className='responsive-container bg-neutral py-8 min-h-[calc(100vh-64px)] flex flex-col justify-between'>
+			<header className='responsive-container bg-neutral h-[calc(100vh-88px)]  pb-12'>
 				{isBlogPage ? (
 					<div>
 						<h1 className='text-3xl md:text-4xl lg:text-5xl font-bold pb-4 text-primary-500'>
