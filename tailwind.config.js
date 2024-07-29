@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
 	content: [
 		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -76,6 +78,7 @@ module.exports = {
 				'calc-50-minus-2': 'calc(50% - 0.5rem)'
 			}
 		},
+		screens: { 'xs': '475px', ...defaultTheme.screens },
 		typography: theme => ({
 			DEFAULT: {
 				css: {
