@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import ButtonWrapper from '../containers/ButtonWrapper'
+import { shimmer, toBase64 } from '../utils/utils'
 
 const AboveTheFold = ({ obj, isHomepage }) => {
 	return (

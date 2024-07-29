@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { isMp4 } from '../utils/utils'
+import { isMp4, shimmer, toBase64 } from '../utils/utils'
 import GifImage from './GifImage'
 
 const Card = ({

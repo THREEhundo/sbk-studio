@@ -1,5 +1,7 @@
 import Image from 'next/image'
-const AuthorAvatar = ({ imageUrl, altText, size = 48 }) => {
+import { shimmer, toBase64 } from '../utils/utils'
+
+const AuthorAvatar = ({ imageUrl, altText, size = 48, blurDataURL }) => {
 	return (
 		<div
 			className={`w-${size / 4} h-${
@@ -12,9 +14,7 @@ const AuthorAvatar = ({ imageUrl, altText, size = 48 }) => {
 				className='object-cover object-center absolute top-[-0.6rem] left-0'
 				alt={altText || 'Author Image'}
 				priority={true}
-				blurDataURL={`data:image/svg+xml;base64,${toBase64(
-					shimmer(640, 360)
-				)}`}
+				blurDataURL={blurDataURL}
 			/>
 		</div>
 	)

@@ -3,17 +3,33 @@ import { notFound } from 'next/navigation'
 
 export async function getHeaderData() {
 	try {
-		const [homepageData, blogPostsData] = await Promise.all([
-			getData('seo'),
-			getData('blog-posts')
-		])
-		return {
-			hero: homepageData,
-			blogs: blogPostsData
+		console.log('Fetching data for: seo')
+		const data = await getData('seo')
+		console.log('SEO data fetched successfully:', data)
+
+		// Find the home object or use the first object if home is not found
+		const homeObject = data.find(item => item.id === 'home') || data[0]
+
+		if (!homeObject) {
+			console.warn('No suitable SEO data found. Using fallback.')
+			return {
+				pageTitle: 'Default Page Title',
+				metaDescription: 'Default meta description',
+				h1: 'Default H1',
+				image: '/default-image.jpg',
+				imageAlt: 'Default image alt text',
+				sections: [],
+				cta: {
+					heading: 'Default CTA Heading',
+					buttonText: 'Click Here'
+				}
+			}
 		}
+
+		return homeObject
 	} catch (error) {
-		console.error('Error fetching homepage data:', error)
-		notFound()
+		console.error('Error in getHeaderData:', error)
+		return null
 	}
 }
 

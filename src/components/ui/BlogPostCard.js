@@ -5,21 +5,28 @@ import Link from 'next/link'
 import AuthorAvatar from './AuthorAvatar'
 
 const BlogPostCard = ({ post, maxHeight }) => {
-	console.log(post)
+	console.log('BlogPostCard received post:', {
+		id: post.id,
+		title: post.title
+	})
+
 	const featureSizes = '(max-width: 1280px) calc(100vw - 96px), 1184px'
 	const cardSizes = '(max-width: 767px) calc(100vw - 64px),  512px'
 	const sizesGive = post.feature ? featureSizes : cardSizes
+
 	return (
 		<Link href={`/blog/${post.id}`}>
-			<div style={{ maxHeight: maxHeight }} className={`overflow-hidden`}>
+			<div
+				style={{ maxHeight: maxHeight }}
+				className={`overflow-hidden mb-4`}>
 				<Image
 					src={post.image}
 					alt={post.altTag || `Image for ${post.title}`}
 					width={2464}
 					height={1856}
-					className='w-full h-auto object-cover'
+					className='w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105'
 					style={{ maxHeight: `100%` }}
-					sizes={`${sizesGive}`}
+					sizes={sizesGive}
 					priority
 					placeholder='blur'
 					blurDataURL={`data:image/svg+xml;base64,${toBase64(
@@ -28,24 +35,27 @@ const BlogPostCard = ({ post, maxHeight }) => {
 				/>
 			</div>
 			<article
-				className='border-b pb-8 group transition-colors duration-200'
+				className='border-b pb-8 space-y-4 group-hover:border-secondary-500 transition-colors duration-300'
 				aria-labelledby={`post-title-${post.id}`}>
 				<h2
 					id={`post-title-${post.id}`}
-					className='text-2xl font-semibold group-hover:text-secondary-500 transition-colors duration-200'>
+					className='text-2xl font-semibold group-hover:text-secondary-500 transition-colors duration-300'>
 					{post.title}
 				</h2>
-				<div className='flex items-center space-x-2'>
+				<div className='flex items-center space-x-3'>
 					{post.authorImageUrl ? (
 						<AuthorAvatar
 							imageUrl={post.authorImageUrl}
-							size={50}
+							size={40}
+							blurDataURL={`data:image/svg+xml;base64,${toBase64(
+								shimmer(640, 360)
+							)}`}
 						/>
 					) : (
 						<div
 							className='w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-primary-500'
 							aria-hidden='true'>
-							{/*<Placeholder width={40} height={40} type='icon' />*/}
+							<Placeholder width={40} height={40} type='icon' />
 						</div>
 					)}
 					<div>
@@ -63,11 +73,7 @@ const BlogPostCard = ({ post, maxHeight }) => {
 				<p className='mt-2 text-primary-500 line-clamp-3'>
 					{post.excerpt}
 				</p>
-				<div className='mt-2 flex items-center text-sm text-primary-500 space-x-2'>
-					<span aria-label='Estimated reading time'>
-						{post.readingTime} min read
-					</span>
-					<span aria-hidden='true'>•</span>
+				<div className='flex items-center text-sm text-primary-500 space-x-3'>
 					<ul className='flex flex-wrap gap-2' aria-label='Tags'>
 						{post.tags.map(tag => (
 							<li

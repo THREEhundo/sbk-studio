@@ -1,10 +1,10 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import AboveTheFold from './AboveTheFold'
-import dynamic from 'next/dynamic'
 import BlogPostCard from '../ui/BlogPostCard'
 
 const Header = ({ isBlogPage = false, heroData, featureArticle }) => {
+	console.log('Feature Article in Header:', featureArticle)
 	const [cardContainerHeight, setCardContainerHeight] = useState('auto')
 	const [maxHeight, setMaxHeight] = useState('auto')
 	const headerRef = useRef(null)
@@ -27,9 +27,11 @@ const Header = ({ isBlogPage = false, heroData, featureArticle }) => {
 		return () => window.removeEventListener('resize', updateCardHeight)
 	}, [maxHeight, cardContainerHeight])
 
+	console.log('BlogList received posts:', featureArticle)
+
 	const containerStyles = `h-[calc(100vh-88px)] pb-12`
 	const featureStyles = `max-h-[${maxHeight}] flex flex-col`
-	console.log('++', maxHeight)
+
 	return (
 		<header
 			ref={headerRef}

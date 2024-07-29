@@ -7,6 +7,7 @@ import UpChevronSVG from './icons/UpChevronSVG'
 import Section from './layout/Section'
 import FeatureItem from './ui/FeatureItems'
 import FolderIcon from './icons/FolderIcon'
+import { shimmer, toBase64 } from './utils/utils'
 
 /**
  * Main Component

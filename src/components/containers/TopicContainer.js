@@ -1,6 +1,7 @@
 import React from 'react'
 import FeaturesContainerSM from './FeaturesContainerSM'
 import Image from 'next/image'
+import { shimmer, toBase64 } from '../utils/utils'
 
 const TopicContainer = async ({ dataSet }) => {
 	return (

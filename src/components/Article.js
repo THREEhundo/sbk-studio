@@ -37,6 +37,8 @@ const Article = ({ post }) => {
 		return () => window.removeEventListener('scroll', handleScroll)
 	}, [])
 
+	console.log(post)
+
 	return (
 		<article
 			ref={articleRef}

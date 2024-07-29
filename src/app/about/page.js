@@ -65,8 +65,6 @@ export async function generateMetadata() {
 const About = async () => {
 	const aboutObj = await getServicesData()
 	const aboutId = aboutObj.pageTitle
-	console.log(aboutId, `about section`)
-	console.log(aboutObj, `about section`)
 
 	if (!aboutObj) {
 		notFound()

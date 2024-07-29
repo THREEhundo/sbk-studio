@@ -1,10 +1,7 @@
 import fs from 'fs/promises'
 import path from 'path'
 import { serialize } from 'next-mdx-remote/serialize'
-import {
-	calculateReadingTime,
-	convertToISOString
-} from '@/components/utils/utils'
+import { convertToISOString } from '@/components/utils/utils'
 
 export const getBlogPostById = async id => {
 	try {
@@ -41,9 +38,6 @@ export const getBlogPostById = async id => {
 			throw new Error('Unsupported content format')
 		}
 
-		// Calculate reading time
-		const readingTime = calculateReadingTime(post.content)
-
 		// Handle the publishDate
 		let formattedDate
 		try {
@@ -61,7 +55,6 @@ export const getBlogPostById = async id => {
 		return {
 			...post,
 			content: mdxSource,
-			readingTime,
 			publishDate: isoPublishDate
 		}
 	} catch (error) {

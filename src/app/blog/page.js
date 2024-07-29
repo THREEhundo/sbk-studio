@@ -2,19 +2,27 @@ import BlogPostContainer from '@/components/containers/BlogPostContainer'
 import Layout from '@/components/Layout'
 import Header from '@/components/layout/Header'
 import { getHeaderData } from '@/lib/pageData'
+import { getData } from '@/lib/getData'
 import React from 'react'
 
 const Blog = async () => {
-	const headerData = await getHeaderData()
+	try {
+		const headerData = await getHeaderData()
+		console.log('Header data:', headerData)
 
-	// Find the specific article data
-	const featureArticle = headerData.blogs.find(item => item.feature)
-	return (
-		<Layout>
-			<Header featureArticle={featureArticle} isBlogPage={true} />
-			<BlogPostContainer dataSet={headerData.blogs} />
-		</Layout>
-	)
+		const blogPosts = await getData('blog-posts')
+		console.log('Blog posts data:', blogPosts)
+
+		return (
+			<Layout>
+				<Header featureArticle={blogPosts[0] || {}} isBlogPage={true} />
+				<BlogPostContainer dataSet={blogPosts || []} />
+			</Layout>
+		)
+	} catch (error) {
+		console.error('Error in Blog component:', error)
+		return <div>Error loading blog content. Please try again later.</div>
+	}
 }
 
 export default Blog

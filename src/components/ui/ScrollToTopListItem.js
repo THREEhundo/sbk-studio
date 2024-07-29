@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import { shimmer, toBase64 } from '../utils/utils'
 
 const ScrollToTopListItem = () => {
 	const imageRef = useRef(null)

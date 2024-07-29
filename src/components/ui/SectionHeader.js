@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { shimmer, toBase64 } from '../utils/utils'
 
 const SectionHeader = ({
 	title,
