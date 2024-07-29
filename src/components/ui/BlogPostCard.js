@@ -23,7 +23,7 @@ const BlogPostCard = ({ post, maxHeight }) => {
 					priority
 					placeholder='blur'
 					blurDataURL={`data:image/svg+xml;base64,${toBase64(
-						shimmer(320, 240)
+						shimmer(2464, 1856)
 					)}`}
 				/>
 			</div>

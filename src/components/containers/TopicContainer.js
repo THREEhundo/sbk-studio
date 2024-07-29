@@ -26,6 +26,10 @@ const TopicContainer = async ({ dataSet }) => {
 										width={2464}
 										height={1856}
 										className='rounded-lg shadow-lg w-full h-auto'
+										placeholder='blur'
+										blurDataURL={`data:image/svg+xml;base64,${toBase64(
+											shimmer(640, 360)
+										)}`}
 									/>
 								</div>
 							</div>

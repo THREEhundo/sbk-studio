@@ -44,6 +44,9 @@ const ScrollToTopListItem = () => {
 			onKeyPress={e => {
 				if (e.key === 'Enter') scrollToTop()
 			}}
+			blurDataURL={`data:image/svg+xml;base64,${toBase64(
+				shimmer(24, 24)
+			)}`}
 		/>
 	)
 }

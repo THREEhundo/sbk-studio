@@ -12,6 +12,10 @@ const AboveTheFold = ({ obj, isHomepage }) => {
 					alt={obj.imageAlt}
 					className='object-cover'
 					priority={true}
+					placeholder='blur'
+					blurDataURL={`data:image/svg+xml;base64,${toBase64(
+						shimmer(640, 360)
+					)}`}
 				/>
 			</div>
 			<div className='w-full z-10 bg-neutral-800 bg-opacity-75 col-start-1 col-end-1 md:col-end-4 md:col-start-1 row-start-5 row-end-7 md:row-start-2 md:row-end-3 md:self-end md:p-5'>

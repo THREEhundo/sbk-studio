@@ -26,6 +26,10 @@ const Main = () => {
 							height={2048}
 							alt='Rocket launching off of a laptop'
 							className='rounded-lg shadow-lg'
+							placeholder='blur'
+							blurDataURL={`data:image/svg+xml;base64,${toBase64(
+								shimmer(640, 360)
+							)}`}
 						/>
 					</div>
 					<FolderIcon className='md:w-1/2 space-y-4 '>
@@ -54,6 +58,10 @@ const Main = () => {
 							height={2048}
 							alt='Glowing translucent balls on a wet surface'
 							className='rounded-lg shadow-lg'
+							placeholder='blur'
+							blurDataURL={`data:image/svg+xml;base64,${toBase64(
+								shimmer(640, 360)
+							)}`}
 						/>
 					</div>
 					<div className='md:w-1/2 space-y-4'>
@@ -124,6 +132,10 @@ const Main = () => {
 						height={1856}
 						alt='Rocket launching off of a laptop'
 						className='rounded-lg shadow-lg md:w-1/2 space-y-4'
+						placeholder='blur'
+						blurDataURL={`data:image/svg+xml;base64,${toBase64(
+							shimmer(640, 360)
+						)}`}
 					/>
 				</div>
 			</Section>

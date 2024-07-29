@@ -28,6 +28,9 @@ const Card = ({
 								width={320}
 								height={320}
 								className='w-full h-auto rounded-lg'
+								blurDataURL={`data:image/svg+xml;base64,${toBase64(
+									shimmer(640, 360)
+								)}`}
 							/>
 						) : (
 							<Image
@@ -36,6 +39,9 @@ const Card = ({
 								width={320}
 								height={240}
 								className='w-full h-auto rounded-lg'
+								blurDataURL={`data:image/svg+xml;base64,${toBase64(
+									shimmer(640, 360)
+								)}`}
 							/>
 						)}
 					</div>

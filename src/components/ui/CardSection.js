@@ -43,7 +43,7 @@ const CardSection = React.memo(
 		}
 
 		return (
-			<section className='responsive-container'>
+			<section className='responsive-container grid'>
 				<SectionHeader
 					title={title}
 					description={description}

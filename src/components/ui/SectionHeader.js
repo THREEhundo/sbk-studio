@@ -36,6 +36,9 @@ const SectionHeader = ({
 						src={imgUrl}
 						alt={imageAlt}
 						className='rounded-lg shadow-lg w-full h-full object-cover'
+						blurDataURL={`data:image/svg+xml;base64,${toBase64(
+							shimmer(640, 360)
+						)}`}
 					/>
 				</div>
 			)}
