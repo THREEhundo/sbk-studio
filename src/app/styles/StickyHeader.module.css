@@ -79,3 +79,11 @@
 	animation-timeline: scroll();
 	animation-range: 0 90vh;
 }
+
+.truncateText {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+	transition: max-width 0.3s ease-out;
+}

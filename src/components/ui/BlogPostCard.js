@@ -47,6 +47,7 @@ const BlogPostCard = ({ post, maxHeight }) => {
 						<AuthorAvatar
 							imageUrl={post.authorImageUrl}
 							size={40}
+							altText={`${post.author} Profile Picture`}
 							blurDataURL={`data:image/svg+xml;base64,${toBase64(
 								shimmer(640, 360)
 							)}`}
