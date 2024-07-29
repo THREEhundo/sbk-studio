@@ -80,7 +80,7 @@ const Services = async () => {
 		<Layout>
 			<Header heroData={servicesObj} specificId={specificID} />
 
-			<main className='bg-neutral responsive-container'>
+			<main className='bg-neutral responsive-container mt-14 md:mt-0'>
 				{/* Services Overview Section */}
 				{/*<Section title='Our Services' className='text-center'>*/}
 				{/* Services introduction */}

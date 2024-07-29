@@ -4,6 +4,7 @@ import ButtonWrapper from '../containers/ButtonWrapper'
 import { shimmer, toBase64 } from '../utils/utils'
 
 const AboveTheFold = ({ obj, isHomepage }) => {
+	const featureSizes = '(max-width: 1280px) calc(100vw - 96px), 1184px'
 	return (
 		<div className='grid gap-4 grid-cols-1 md:grid-cols-5 grid-rows-6 md:grid-rows-2 min-h-[50vh] h-full'>
 			<div className='relative w-full h-full overflow-hidden col-start-1 col-end-1 md:col-end-6 row-start-1 row-end-5 md:row-start-1 md:row-end-3'>
@@ -13,6 +14,7 @@ const AboveTheFold = ({ obj, isHomepage }) => {
 					alt={obj.imageAlt}
 					className='object-cover'
 					priority={true}
+					sizes={featureSizes}
 					placeholder='blur'
 					blurDataURL={`data:image/svg+xml;base64,${toBase64(
 						shimmer(640, 360)
