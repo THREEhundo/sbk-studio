@@ -1,20 +1,34 @@
 import Image from 'next/image'
 import Placeholder from './Placeholder'
-import { formatDate } from '../utils/utils'
+import { formatDate, shimmer, toBase64 } from '../utils/utils'
 import Link from 'next/link'
 import AuthorAvatar from './AuthorAvatar'
 
-const BlogPostCard = ({ post }) => {
+const BlogPostCard = ({ post, maxHeight }) => {
+	console.log(post)
+	const featureSizes = '(max-width: 1280px) calc(100vw - 96px), 1184px'
+	const cardSizes = '(max-width: 767px) calc(100vw - 64px),  512px'
+	const sizesGive = post.feature ? featureSizes : cardSizes
 	return (
-		<Link href={`/blog/${post.id}`} className='block'>
-			<Image
-				src={post.image}
-				alt={post.altTag || `Image for ${post.title}`}
-				width={2464}
-				height={1856}
-			/>
+		<Link href={`/blog/${post.id}`}>
+			<div style={{ maxHeight: maxHeight }} className={`overflow-hidden`}>
+				<Image
+					src={post.image}
+					alt={post.altTag || `Image for ${post.title}`}
+					width={2464}
+					height={1856}
+					className='w-full h-auto object-cover'
+					style={{ maxHeight: `100%` }}
+					sizes={`${sizesGive}`}
+					priority
+					placeholder='blur'
+					blurDataURL={`data:image/svg+xml;base64,${toBase64(
+						shimmer(320, 240)
+					)}`}
+				/>
+			</div>
 			<article
-				className='border-b pb-4 group transition-colors duration-200'
+				className='border-b pb-8 group transition-colors duration-200'
 				aria-labelledby={`post-title-${post.id}`}>
 				<h2
 					id={`post-title-${post.id}`}
