@@ -2,9 +2,12 @@ import Image from 'next/image'
 import React from 'react'
 import ButtonWrapper from '../containers/ButtonWrapper'
 import { shimmer, toBase64 } from '../utils/utils'
+import useConnectionQuality from '@/lib/useConnectionQuality'
 
 const AboveTheFold = ({ obj, isHomepage }) => {
 	const featureSizes = '(max-width: 1280px) calc(100vw - 96px), 1184px'
+	const imageQuality = useConnectionQuality()
+
 	return (
 		<div className='grid gap-4 grid-cols-1 md:grid-cols-5 auto-rows-fr h-full'>
 			<div className='relative w-full h-full overflow-hidden col-span-full row-span-4 md:row-start-1 md:row-end-6'>
@@ -16,6 +19,7 @@ const AboveTheFold = ({ obj, isHomepage }) => {
 					className='object-cover'
 					priority={true}
 					sizes={featureSizes}
+					quality={imageQuality}
 					placeholder='blur'
 					blurDataURL={`data:image/svg+xml;base64,${toBase64(
 						shimmer(640, 360)
