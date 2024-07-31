@@ -9,6 +9,7 @@ import { getPageData } from '@/lib/pageData'
 import { notFound } from 'next/navigation'
 import { generateSEOMetadata } from '../metadata'
 import CardSection from '@/components/ui/CardSection'
+import MainContainer from '@/components/containers/MainContainer'
 
 const SERVICES_PAGE_TITLE =
 	'SBK STUDIO | Web Design & Development Services for Small Businesses'
@@ -74,48 +75,28 @@ const Services = async () => {
 		notFound()
 	}
 
-	console.log(servicesObj.sections.map(x => x.h2))
+	const h3sObj = [servicesObj.sections.find(service => service.h3s)]
+
+	console.log(`SHOW ME WHAT YOU GOT`, h3sObj)
 
 	return (
 		<Layout>
 			<Header heroData={servicesObj} specificId={specificID} />
 
-			<main className='bg-neutral responsive-container mt-14 md:mt-0'>
-				{/* Services Overview Section */}
-				{/*<Section title='Our Services' className='text-center'>*/}
-				{/* Services introduction */}
-				{/*<p className='text-xl text-primary-100 max-w-3xl mx-auto mb-12'>
-						At SBK Studio, we offer a comprehensive suite of web
-						development and design services tailored to elevate your
-						online presence and drive your business forward.
-					</p>*/}
-
-				{/* Service highlights grid */}
-				{/*<div className='grid grid-row-1 md:grid-row-2 lg:grid-row-3 gap-8 mb-12'>
-						{servicesObj.sections.map((service, index) => (
-							<HoverRevealComponent
-								key={service.id}
-								title={service.h2}
-								description={service.content}
-								button
-							/>
-						))}
-					</div>*/}
-
-				{/* CTA button */}
-				{/*<ButtonWrapper variant='primary' size='large'>
-						Explore All Services
-					</ButtonWrapper>*/}
-				{/*</Section>*/}
+			<MainContainer>
+				<TopicContainer dataSet={h3sObj} />
 				<div className='grid grid-row-1 md:grid-row-2 lg:grid-row-3 gap-8 mb-12'>
-					{servicesObj.sections.map((section, index) => (
-						<HoverRevealComponent
-							key={section.id}
-							title={section.h2}
-							content={section.content}
-							content2={section.content2}
-						/>
-					))}
+					{servicesObj.sections.map(
+						section =>
+							!section.h3s && (
+								<HoverRevealComponent
+									key={section.id}
+									title={section.h2}
+									content={section.content}
+									content2={section.content2}
+								/>
+							)
+					)}
 				</div>
 
 				{/*Detailed services information
@@ -136,7 +117,7 @@ const Services = async () => {
 						Get in Touch
 					</ButtonWrapper>
 				</Section>*/}
-			</main>
+			</MainContainer>
 		</Layout>
 	)
 }

@@ -5,7 +5,6 @@ import BlogPostCard from '../ui/BlogPostCard'
 
 const Header = ({ isBlogPage = false, heroData, featureArticle }) => {
 	console.log('Feature Article in Header:', featureArticle)
-	const [cardContainerHeight, setCardContainerHeight] = useState('auto')
 	const [maxHeight, setMaxHeight] = useState('auto')
 	const headerRef = useRef(null)
 	const h1Ref = useRef(null)
@@ -14,7 +13,8 @@ const Header = ({ isBlogPage = false, heroData, featureArticle }) => {
 		const updateCardHeight = () => {
 			if (headerRef.current && h1Ref.current) {
 				const viewportHeight = window.innerHeight
-				const navHeight = 88 // Based on your calc(100vh-88px)
+				const viewportWidth = widnow.innerWidth
+				const navHeight = viewportWidth < 768 ? 72 : 88 // Based on your calc(100vh-88px)
 				const h1Height = h1Ref.current.offsetHeight
 				const remainingHeaderHeight = viewportHeight - navHeight
 				const remainingImageHeight = remainingHeaderHeight - h1Height
@@ -25,7 +25,7 @@ const Header = ({ isBlogPage = false, heroData, featureArticle }) => {
 		window.addEventListener('resize', updateCardHeight)
 
 		return () => window.removeEventListener('resize', updateCardHeight)
-	}, [maxHeight, cardContainerHeight])
+	}, [maxHeight])
 
 	console.log('BlogList received posts:', featureArticle)
 
