@@ -1,10 +1,7 @@
-// File: /src/app/blog/[id]/page.js
-
 import { getBlogPostById } from '@/lib/getBlogPostById'
 import Article from '@/components/Article'
 import Layout from '@/components/Layout'
 import { notFound } from 'next/navigation'
-import { Metadata } from 'next'
 
 // Generate metadata for the page
 export async function generateMetadata({ params }) {

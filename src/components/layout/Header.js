@@ -13,7 +13,7 @@ const Header = ({ isBlogPage = false, heroData, featureArticle }) => {
 		const updateCardHeight = () => {
 			if (headerRef.current && h1Ref.current) {
 				const viewportHeight = window.innerHeight
-				const viewportWidth = widnow.innerWidth
+				const viewportWidth = window.innerWidth
 				const navHeight = viewportWidth < 768 ? 72 : 88 // Based on your calc(100vh-88px)
 				const h1Height = h1Ref.current.offsetHeight
 				const remainingHeaderHeight = viewportHeight - navHeight

@@ -16,13 +16,20 @@ const CardSection = React.memo(
 		imageAlt,
 		imageType
 	}) => {
+		const flexClasses = `flex gap-4 flex-col`
+		const centerIconSection =
+			title == 'Affordable Custom Websites That Perform'
+				? `flex justify-center mx-auto`
+				: ''
+		const containGridWidth = `max-w-4xl`
+
 		const renderCardList = () => {
 			if (!cards) return null
 
 			if (cards.some(item => item.type === 'IconCard')) {
 				return (
 					<IconCardsContainer>
-						<CardList cards={cards} />
+						<CardList cards={cards} className={flexClasses} />
 					</IconCardsContainer>
 				)
 			}
@@ -43,7 +50,7 @@ const CardSection = React.memo(
 		}
 
 		return (
-			<section className='responsive-container grid'>
+			<section className='responsive-container pb-12'>
 				<SectionHeader
 					title={title}
 					description={description}

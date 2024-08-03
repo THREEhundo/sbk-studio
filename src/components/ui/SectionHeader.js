@@ -11,26 +11,40 @@ const SectionHeader = ({
 	children
 }) => {
 	const hasChildren = React.Children.count(children) > 0
-	const gridClasses =
-		'grid gap-4 p-4 md:grid-cols-4 md:grid-rows-[repeat(4,minmax(0,1fr))]'
-	const flexClasses = 'flex flex-wrap gap-4'
-	const layoutClasses = hasChildren ? gridClasses : flexClasses
+	const onlyGrid = `grid gap-4`
+	const gridContentImageIcons = `md:grid-cols-[minmax(auto,500px)_1fr]`
+	const gridClasses = `md:grid-cols-[minmax(auto,500px)_350px] justify-center`
+	const flexClasses =
+		'flex flex-wrap gap-4 justify-center mx-auto max-w-[500px]'
 
-	const contentClasses = hasChildren
-		? 'md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-3'
-		: 'flex-1 md:max-w-1/2'
+	const layoutClasses =
+		title == 'Full-Service Support to Grow Your Online Presence'
+			? `${onlyGrid} ${gridContentImageIcons}`
+			: title == 'Affordable Custom Websites That Perform'
+			? `${onlyGrid} ${gridClasses}`
+			: ''
 
+	const innerLayoutClasses = layoutClasses == '' ? flexClasses : ''
+	const maxGridWith =
+		title == 'Affordable Custom Websites That Perform'
+			? `max-w-[800px]`
+			: ''
+
+	const fullColumnImage =
+		title == 'Full-Service Support to Grow Your Online Presence'
+			? `md:col-start-2 md:row-span-3`
+			: ''
 	const imageClasses = hasChildren
 		? 'md:col-start-3 md:col-end-5 md:row-start-1 md:row-end-3'
 		: 'flex-1 md:max-w-1/2'
 	return (
-		<div className={''}>
-			<div className={''}>
+		<div className={layoutClasses}>
+			<div className={innerLayoutClasses}>
 				<h2 className='text-2xl font-bold mb-4'>{title}</h2>
 				<p className='mb-4'>{description}</p>
 			</div>
 			{imgUrl && (
-				<div className={''}>
+				<div className={`${fullColumnImage}`}>
 					<Image
 						width={2048}
 						height={2048}
@@ -47,8 +61,8 @@ const SectionHeader = ({
 				<div
 					className={
 						imgUrl && imageType === 'IconCard'
-							? 'md:col-start-1 md:col-end-5 md:row-start-3 md:row-end-8 grid grid-cols-2 gap-4'
-							: 'flex flex-wrap gap-4 w-full'
+							? `md:col-start-1 md:col-end-5 md:row-start-3 md:row-end-8 grid grid-cols-2 gap-4 ${maxGridWith}`
+							: ''
 					}>
 					{React.Children.map(children, (child, index) => {
 						const childClasses = [

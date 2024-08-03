@@ -4,19 +4,21 @@ import { shimmer, toBase64 } from '../utils/utils'
 
 const IconCard = ({ id, title, description, icon }) => {
 	return (
-		<div id={id}>
+		<div id={id} className={`flex gap-4`}>
 			{icon ? (
-				<Image
-					key={id}
-					src={icon}
-					width={40}
-					height={40}
-					alt={title}
-					className='text-secondary-500'
-					blurDataURL={`data:image/svg+xml;base64,${toBase64(
-						shimmer(40, 40)
-					)}`}
-				/>
+				<div className='flex-shrink-0 w-[50px] h-[50px]'>
+					<Image
+						key={id}
+						src={icon}
+						width={50}
+						height={50}
+						alt={title}
+						className='text-secondary-500'
+						blurDataURL={`data:image/svg+xml;base64,${toBase64(
+							shimmer(50, 50)
+						)}`}
+					/>
+				</div>
 			) : (
 				<div
 					key={id}
@@ -29,7 +31,7 @@ const IconCard = ({ id, title, description, icon }) => {
 			<h3 className='text-xl font-semibold text-primary-500 mb-2'>
 				{title}
 			</h3>
-			<p className='text-primary-100'>{description}</p>
+			{description ?? <p className='text-primary-100'>{description}</p>}
 		</div>
 	)
 }
