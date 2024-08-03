@@ -36,3 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 /data
+
+# aggregator
+caggr.sh
+aggregation_output.txt
