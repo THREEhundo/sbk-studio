@@ -2,8 +2,6 @@ import BlogPostCard from '../ui/BlogPostCard'
 import { getData } from '@/lib/getData'
 
 const BlogPostContainer = async ({ dataSet }) => {
-	console.log('BlogPostContainer received dataSet:', dataSet)
-
 	let posts = []
 	try {
 		if (typeof dataSet === 'string') {
@@ -13,11 +11,8 @@ const BlogPostContainer = async ({ dataSet }) => {
 			// If dataSet is already an array, use it directly
 			posts = dataSet
 		} else {
-			console.error('Invalid dataSet type:', typeof dataSet)
 			return <div>Error: Invalid data format</div>
 		}
-
-		console.log('Processed posts:', posts)
 
 		if (!Array.isArray(posts) || posts.length === 0) {
 			return <div>No blog posts available</div>
@@ -32,7 +27,6 @@ const BlogPostContainer = async ({ dataSet }) => {
 			</section>
 		)
 	} catch (error) {
-		console.error('Error in BlogPostContainer:', error)
 		return <div>Error loading blog posts. Please try again later.</div>
 	}
 }

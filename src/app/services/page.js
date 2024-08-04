@@ -77,8 +77,6 @@ const Services = async () => {
 
 	const h3sObj = [servicesObj.sections.find(service => service.h3s)]
 
-	console.log(`SHOW ME WHAT YOU GOT`, h3sObj)
-
 	return (
 		<Layout>
 			<Header heroData={servicesObj} specificId={specificID} />
@@ -98,25 +96,6 @@ const Services = async () => {
 							)
 					)}
 				</div>
-
-				{/*Detailed services information
-				<TopicContainer dataSet={servicesObj.sections} />
-
-				{/* Call-to-action Section */}
-				{/*<Section
-					title='Ready to Elevate Your Online Presence?'
-					className='text-center bg-neutral-800'>
-					<p className='text-xl text-primary-100 mb-8'>
-						Let&apos;s discuss how our services can be tailored to
-						meet your unique business needs and goals.
-					</p>
-					<ButtonWrapper
-						href='/contact'
-						variant='primary'
-						size='large'>
-						Get in Touch
-					</ButtonWrapper>
-				</Section>*/}
 			</MainContainer>
 		</Layout>
 	)

@@ -3,9 +3,7 @@ import { notFound } from 'next/navigation'
 
 export async function getHeaderData() {
 	try {
-		console.log('Fetching data for: seo')
 		const data = await getData('seo')
-		console.log('SEO data fetched successfully:', data)
 
 		// Find the home object or use the first object if home is not found
 		const homeObject = data.find(item => item.id === 'home') || data[0]
@@ -58,7 +56,6 @@ export async function getPageMetaData(pageTitle) {
 
 	// Assuming seoData is an object with pageTitle as keys
 	if (data[pageTitle]) {
-		console.log(data[pageTitle])
 		return data[pageTitle]
 	}
 

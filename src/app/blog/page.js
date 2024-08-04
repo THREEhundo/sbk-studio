@@ -8,10 +8,8 @@ import React from 'react'
 const Blog = async () => {
 	try {
 		const headerData = await getHeaderData()
-		console.log('Header data:', headerData)
 
 		const blogPosts = await getData('blog-posts')
-		console.log('Blog posts data:', blogPosts)
 
 		return (
 			<Layout>

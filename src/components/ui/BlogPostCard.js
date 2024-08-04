@@ -5,11 +5,6 @@ import Link from 'next/link'
 import AuthorAvatar from './AuthorAvatar'
 
 const BlogPostCard = ({ post, maxHeight }) => {
-	console.log('BlogPostCard received post:', {
-		id: post.id,
-		title: post.title
-	})
-
 	const featureSizes = '(max-width: 1280px) calc(100vw - 96px), 1184px'
 	const cardSizes = '(max-width: 767px) calc(100vw - 64px),  512px'
 	const sizesGive = post.feature ? featureSizes : cardSizes

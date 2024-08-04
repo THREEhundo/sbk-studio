@@ -16,22 +16,15 @@ const createBlogPost = (
 	image = null,
 	altTag = ''
 ) => {
-	console.log(`Creating blog post object for id: ${id}`)
-
 	// Parse the date, providing a fallback if it's invalid
 	const date = new Date(publishDate)
 	const validDate = !isNaN(date.getTime()) ? date : new Date()
 
 	const formatContent = content => {
-		console.log(
-			`Formatting content for post ${id}. Content type:`,
-			typeof content
-		)
 		if (typeof content === 'string') {
 			return content
 		}
 		if (Array.isArray(content)) {
-			console.log(`Content is an array with ${content.length} items`)
 			return content
 				.map((section, index) => {
 					if (index === 0) {
@@ -68,10 +61,6 @@ const createBlogPost = (
 	}
 
 	const formattedContent = formatContent(content)
-	console.log(
-		`Formatted content length for post ${id}:`,
-		formattedContent.length
-	)
 
 	const blogPost = {
 		id,
@@ -115,8 +104,6 @@ const createBlogPost = (
 			}
 		}
 	}
-
-	console.log(`Created blog post object for id ${id}:`, blogPost.toJSON())
 
 	return blogPost
 }

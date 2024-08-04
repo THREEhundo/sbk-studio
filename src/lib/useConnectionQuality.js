@@ -6,16 +6,12 @@ const useConnectionQuality = () => {
 	const [quality, setQuality] = useState(75)
 
 	useEffect(() => {
-		console.log('useConnectionQuality hook mounted')
 		const updateQuality = () => {
-			console.log('Updating connection quality')
-
 			if (
 				'connection' in navigator &&
 				'downlink' in navigator.connection
 			) {
 				const { downlink, rtt } = navigator.connection
-				console.log(`Downlink: ${downlink}Mbps, RTT: ${rtt}ms`)
 
 				// High-speed connection (e.g., fast broadband, 5G)
 				if (downlink > 10 && rtt < 50) {
@@ -36,7 +32,6 @@ const useConnectionQuality = () => {
 			} else {
 				// Fallback if Network Information API is not supported
 				setQuality(75)
-				console.log('Network Information API not supported')
 			}
 		}
 
@@ -55,8 +50,6 @@ const useConnectionQuality = () => {
 				)
 		}
 	}, [])
-
-	console.log(`Current quality setting: ${quality}`)
 
 	return quality
 }

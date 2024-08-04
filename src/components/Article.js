@@ -57,8 +57,6 @@ const Article = ({ post }) => {
 		return () => window.removeEventListener('resize', adjustTitleWidth)
 	}, [])
 
-	console.log(post)
-
 	return (
 		<article
 			ref={articleRef}

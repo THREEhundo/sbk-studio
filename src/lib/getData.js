@@ -6,18 +6,9 @@ export async function getData(fileName) {
 	try {
 		const dataDir = path.join(process.cwd(), 'data')
 		const filePath = path.join(dataDir, `${fileName}.json`)
-		console.log(`Attempting to read file: ${filePath}`)
-		console.log(`Current working directory: ${process.cwd()}`)
-		console.log(
-			`Data directory exists: ${await fs
-				.access(dataDir)
-				.then(() => true)
-				.catch(() => false)}`
-		)
 
 		const fileContents = await fs.readFile(filePath, 'utf8')
 		const data = JSON.parse(fileContents)
-		console.log(`Successfully parsed ${fileName} data:`, data)
 		return data
 	} catch (error) {
 		console.error(`Error reading ${fileName}.json:`, error)
@@ -60,10 +51,8 @@ function getFallbackData(fileName) {
 export async function getBlogPosts(dataSet) {
 	try {
 		const filePath = path.join(process.cwd(), 'data', `${dataSet}.json`)
-		console.log(`Reading file: ${filePath}`)
 		const fileContents = await fs.readFile(filePath, 'utf8')
 		const rawPosts = JSON.parse(fileContents)
-		console.log(`Parsed ${rawPosts.length} raw blog posts`)
 
 		const processedPosts = rawPosts.map(post =>
 			createBlogPost(
@@ -79,7 +68,6 @@ export async function getBlogPosts(dataSet) {
 			)
 		)
 
-		console.log(`Processed ${processedPosts.length} blog posts`)
 		return processedPosts
 	} catch (error) {
 		console.error(`Error processing ${dataSet}.json:`, error)
