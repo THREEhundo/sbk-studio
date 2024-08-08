@@ -17,13 +17,9 @@ const CardSection = React.memo(
 		imageType
 	}) => {
 		const flexClasses = `flex gap-4 flex-col`
-		const centerIconSection =
-			title == 'Affordable Custom Websites That Perform'
-				? `flex justify-center mx-auto`
-				: ''
-		const containGridWidth = `max-w-4xl`
+		const gridClasses = `grid`
 
-		const renderCardList = () => {
+		const renderCardList = classes => {
 			if (!cards) return null
 
 			if (cards.some(item => item.type === 'IconCard')) {
@@ -36,9 +32,9 @@ const CardSection = React.memo(
 
 			if (cards.some(item => item.type === 'PriceCard')) {
 				return (
-					<PricePackageContainer>
-						<CardList cards={cards} />
-					</PricePackageContainer>
+					<CardList cards={cards} className={gridClasses} />
+					//<PricePackageContainer>
+					//</PricePackageContainer>
 				)
 			}
 
@@ -57,7 +53,7 @@ const CardSection = React.memo(
 					imgUrl={imgUrl}
 					imageAlt={imageAlt}
 					imageType={imageType}>
-					{renderCardList()}
+					{renderCardList(gridClasses)}
 				</SectionHeader>
 
 				{footerContent && (

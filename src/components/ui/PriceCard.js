@@ -13,7 +13,7 @@ const PriceCard = ({ index, list = [], className, ...card }) => {
 		<div
 			className={`bg-neutral-800 ${getGradientClass(
 				index
-			)} rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl  h-full min-w-80`}>
+			)} rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl h-full min-w-80`}>
 			<div className='p-8 h-full flex flex-col justify-between grow'>
 				<h3 className='text-2xl font-bold text-primary-500 mb-4'>
 					{card.name}

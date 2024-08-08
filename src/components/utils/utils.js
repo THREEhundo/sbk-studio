@@ -1,3 +1,4 @@
+import { createElement } from 'react'
 export const formatDate = dateString => {
 	if (!dateString) return 'Date unknown'
 
@@ -59,3 +60,20 @@ export const toBase64 = str =>
 	typeof window === 'undefined'
 		? Buffer.from(str).toString('base64')
 		: window.btoa(str)
+
+//export const importIcon = async iconData => {
+//	if (!iconData || !iconData.name || !iconData.import) {
+//		return null
+//	}
+//
+//	try {
+//		const iconModule = await import(`react-icons/${iconData.import}`)
+//		const IconComponent = iconModule[iconData.name]
+//		return IconComponent
+//			? props => createElement(IconComponent, props)
+//			: null
+//	} catch (error) {
+//		console.error(`Failed to load icon: ${iconData.name}`, error)
+//		return null
+//	}
+//}
