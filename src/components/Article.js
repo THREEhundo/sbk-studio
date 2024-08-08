@@ -94,7 +94,7 @@ const Article = ({ post }) => {
 								/>
 							) : (
 								<div
-									className='w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-primary-500'
+									className='w-10 h-10 rounded-full flex items-center justify-center text-primary-500'
 									aria-hidden='true'>
 									<Placeholder
 										width={40}

@@ -7,7 +7,7 @@ const Header = ({ isBlogPage = false, heroData, featureArticle }) => {
 	const [maxHeight, setMaxHeight] = useState('auto')
 	const headerRef = useRef(null)
 	const h1Ref = useRef(null)
-
+	console.log(heroData)
 	useEffect(() => {
 		const updateCardHeight = () => {
 			if (headerRef.current && h1Ref.current) {

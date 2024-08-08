@@ -1,13 +1,17 @@
 import React from 'react'
-import FeaturesContainerSM from './FeaturesContainerSM'
 import Image from 'next/image'
 import { shimmer, toBase64 } from '../utils/utils'
 import FeatureItem from '../ui/FeatureItems'
 
 const TopicContainer = async ({ dataSet }) => {
+	if (!Array.isArray(dataSet) || dataSet.length === 0) {
+		return null
+	}
+	const h3Arr = dataSet[0].h3s
+
 	return (
 		<section>
-			{dataSet.map((topic, i) => (
+			{h3Arr.map((topic, i) => (
 				<div key={topic.id || i} className='grid gap-12 items-center'>
 					<div className='grid gap-12 items-center'>
 						<div>
@@ -44,6 +48,7 @@ const TopicContainer = async ({ dataSet }) => {
 						)}
 						<div>
 							{topic.h3s &&
+								Array.isArray(topic.h3s) &&
 								topic.h3s.map((item, i) => (
 									<FeatureItem key={i} title={item} />
 								))}

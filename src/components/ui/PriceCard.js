@@ -8,13 +8,20 @@ const getGradientClass = index => {
 
 	return gradients[index % gradients.length]
 }
+/**
+ * 	<div
+			className={`bg-neutral-800 ${getGradientClass(
+				index
+			)} rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl h-full flex-shrink flex-grow-0 basis-80 justify-evenly`}>
+ */
+
 const PriceCard = ({ index, list = [], className, ...card }) => {
 	return (
 		<div
 			className={`bg-neutral-800 ${getGradientClass(
 				index
-			)} rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl h-full min-w-80`}>
-			<div className='p-8 h-full flex flex-col justify-between grow'>
+			)} rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl flex basis-80 `}>
+			<div className='p-8 h-full flex flex-col justify-between'>
 				<h3 className='text-2xl font-bold text-primary-500 mb-4'>
 					{card.name}
 				</h3>
@@ -23,7 +30,7 @@ const PriceCard = ({ index, list = [], className, ...card }) => {
 				</div>
 				<p className='text-primary-500 mb-6'>{card.description}</p>
 				{Array.isArray(card.features) && card.features.length > 0 ? (
-					<ul className='space-y-3 mb-8'>
+					<ul className='space-y-3 mb-8 grow'>
 						{card.features.map((feature, index) => (
 							<li
 								key={`pc-${index}`}

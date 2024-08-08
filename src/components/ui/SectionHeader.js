@@ -13,7 +13,7 @@ const SectionHeader = ({
 	const hasChildren = React.Children.count(children) > 0
 	const onlyGrid = `grid gap-4`
 	const gridContentImageIcons = `md:grid-cols-[minmax(auto,500px)_1fr]`
-	const gridClasses = `md:grid-cols-[minmax(auto,500px)_350px] justify-center`
+	const gridClasses = `max-w-[750px] m-auto justify-center`
 	const flexClasses =
 		'flex flex-wrap gap-4 justify-center mx-auto max-w-[500px]'
 
@@ -37,6 +37,10 @@ const SectionHeader = ({
 	const imageClasses = hasChildren
 		? 'md:col-start-3 md:col-end-5 md:row-start-1 md:row-end-3'
 		: 'flex-1 md:max-w-1/2'
+
+	// For PriceCard Container the wrapper has no classes
+	// add wrapper classes for flex
+
 	return (
 		<div className={layoutClasses}>
 			<div className={innerLayoutClasses}>
@@ -62,16 +66,16 @@ const SectionHeader = ({
 					className={
 						imgUrl && imageType === 'IconCard'
 							? `md:col-start-1 md:col-end-5 md:row-start-3 md:row-end-8 grid grid-cols-2 gap-4 ${maxGridWith}`
-							: ''
+							: 'flex flex-wrap gap-4 justify-center'
 					}>
 					{React.Children.map(children, (child, index) => {
 						const childClasses = [
-							'bg-gray-200 rounded-lg p-4',
+							'rounded-lg p-4',
 							imgUrl && imageType === 'IconCard'
 								? index % 2 === 0
 									? 'md:col-start-1 md:col-end-2'
 									: 'md:col-start-2 md:col-end-3'
-								: 'w-full md:w-calc-50-minus-2 flex-grow-0 flex-shrink-0'
+								: 'w-full flex-grow-0 flex-shrink-0'
 						].join(' ')
 
 						if (React.isValidElement(child)) {

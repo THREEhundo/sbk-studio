@@ -8,6 +8,8 @@ import { getPageData } from '@/lib/pageData'
 import { notFound } from 'next/navigation'
 import { generateSEOMetadata } from '../metadata'
 import CardSection from '@/components/ui/CardSection'
+import IconCardSection from '@/components/ui/IconCardSection'
+import PageLayout from '@/components/layout/PageLayout'
 
 const ABOUT_PAGE_TITLE =
 	'SBK STUDIO | About Us | Small Business Web Design & Development'
@@ -64,32 +66,32 @@ export async function generateMetadata() {
 
 const About = async () => {
 	const aboutObj = await getServicesData()
-	const aboutId = aboutObj.pageTitle
 
 	if (!aboutObj) {
 		notFound()
 	}
-	return (
-		<Layout>
-			<Header specificId={aboutId} heroData={aboutObj} />
 
-			<main className='space-y-16'>
-				{aboutObj.sections.map((section, index) => (
-					<CardSection
-						key={index}
-						index={index}
-						title={section.h2}
-						description={section.content}
-						cards={section.h3s || []}
-						imgUrl={section.image}
-						imageAlt={section.imageAlt}
-						imageType={section.type}
-						footerContent={section.content}
-						content2={section.content2}
-					/>
-				))}
-			</main>
-		</Layout>
+	return (
+		<PageLayout
+			headerProps={{
+				specificId: ABOUT_PAGE_TITLE,
+				heroData: aboutObj
+			}}
+			title='About Us'>
+			{aboutObj.sections.map((section, index) => (
+				<CardSection
+					key={index}
+					title={section.h2}
+					description={section.content}
+					cards={section.h3s || []}
+					imgUrl={section.image}
+					imageAlt={section.imageAlt}
+					imageType={section.type}
+					footerContent={section.content}
+					content2={section.content2}
+				/>
+			))}
+		</PageLayout>
 	)
 }
 

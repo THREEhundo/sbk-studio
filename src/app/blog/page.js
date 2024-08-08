@@ -1,6 +1,5 @@
 import BlogPostContainer from '@/components/containers/BlogPostContainer'
-import Layout from '@/components/Layout'
-import Header from '@/components/layout/Header'
+import PageLayout from '@/components/layout/PageLayout'
 import { getHeaderData } from '@/lib/pageData'
 import { getData } from '@/lib/getData'
 import React from 'react'
@@ -8,14 +7,17 @@ import React from 'react'
 const Blog = async () => {
 	try {
 		const headerData = await getHeaderData()
-
 		const blogPosts = await getData('blog-posts')
 
 		return (
-			<Layout>
-				<Header featureArticle={blogPosts[0] || {}} isBlogPage={true} />
+			<PageLayout
+				headerProps={{
+					featureArticle: blogPosts[0] || {},
+					isBlogPage: true
+				}}
+				title='Our Blog'>
 				<BlogPostContainer dataSet={blogPosts || []} />
-			</Layout>
+			</PageLayout>
 		)
 	} catch (error) {
 		console.error('Error in Blog component:', error)

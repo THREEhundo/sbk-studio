@@ -1,37 +1,31 @@
 import { Suspense } from 'react'
-import Layout from '@/components/Layout'
+import PageLayout from '@/components/layout/PageLayout'
 import UseScrollHandler from '@/components/utils/useScrollHandler'
-import Header from '@/components/layout/Header'
-import CardSection from '@/components/ui/CardSection'
 import { notFound } from 'next/navigation'
 import { generateSEOMetadata } from '@/app/metadata'
 import { getPageData, getPortfolioData } from '@/lib/pageData'
 import PortfolioListContainer from '@/components/containers/PortfolioListContainer'
+import CardSection from '@/components/ui/CardSection'
 
 const HOME_PAGE_TITLE =
 	'SBK STUDIO | Small Business Web Design & Development | Affordable Custom Websites'
 
 async function getHomeData() {
 	const pageData = await getPageData()
-
 	if (!Array.isArray(pageData)) {
 		console.error('Page data is not an array:', pageData)
 		return null
 	}
 
-	// Try to find an exact match first
-	let homeObj = pageData.find(item => item.pageTitle === HOME_PAGE_TITLE)
-
-	// If no exact match, try a case-insensitive partial match
-	if (!homeObj) {
-		homeObj = pageData.find(
+	const homeObj =
+		pageData.find(item => item.pageTitle === HOME_PAGE_TITLE) ||
+		pageData.find(
 			item =>
 				item.pageTitle &&
 				item.pageTitle
 					.toLowerCase()
 					.includes('small business web design')
 		)
-	}
 
 	if (!homeObj) {
 		console.error(
@@ -76,13 +70,17 @@ export async function generateMetadata() {
 async function HomeContent() {
 	const homeObj = await getHomeData()
 	const portfolioData = await getPortfolio()
+
 	if (!homeObj) {
 		notFound()
 	}
 
 	return (
-		<>
-			<Header specificId={HOME_PAGE_TITLE} heroData={homeObj} />
+		<PageLayout
+			headerProps={{
+				heroData: homeObj,
+				specificId: HOME_PAGE_TITLE
+			}}>
 			<PortfolioListContainer portfolioData={portfolioData} />
 			{homeObj.sections.map((section, index) => (
 				<CardSection
@@ -93,19 +91,21 @@ async function HomeContent() {
 					imgUrl={section.image}
 					imageAlt={section.imageAlt}
 					imageType={section.type}
+					footerContent={section.footerContent}
+					content2={section.content2}
 				/>
 			))}
-		</>
+		</PageLayout>
 	)
 }
 
 export default function Home() {
 	return (
-		<Layout>
+		<>
 			<UseScrollHandler />
 			<Suspense fallback={<div>Loading...</div>}>
 				<HomeContent />
 			</Suspense>
-		</Layout>
+		</>
 	)
 }
