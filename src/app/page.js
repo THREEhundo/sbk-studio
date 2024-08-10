@@ -81,7 +81,6 @@ async function HomeContent() {
 				heroData: homeObj,
 				specificId: HOME_PAGE_TITLE
 			}}>
-			<PortfolioListContainer portfolioData={portfolioData} />
 			{homeObj.sections.map((section, index) => (
 				<CardSection
 					key={index}
@@ -90,7 +89,6 @@ async function HomeContent() {
 					cards={section.h3s || []}
 					imgUrl={section.image}
 					imageAlt={section.imageAlt}
-					imageType={section.type}
 					footerContent={section.footerContent}
 					content2={section.content2}
 				/>

@@ -25,10 +25,10 @@ const IconComponents = {
 }
 
 const IconCard = ({ title, description, icon }) => {
-	const IconComponent = icon && IconComponents[icon.name]
-
+	const IconComponent = icon && IconComponents[icon]
+	console.log(title, 'TITLE', icon, 'ICON NAME')
 	return (
-		<div className={`flex gap-4`}>
+		<div className={`flex gap-4 items-center`}>
 			<div className='flex-shrink-0 w-[50px] h-[50px] text-secondary-500'>
 				{IconComponent ? (
 					<IconComponent size={50} />

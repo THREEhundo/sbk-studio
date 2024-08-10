@@ -32,7 +32,8 @@ const IconComponents = {
 	MdOutlineDesignServices,
 	SiGooglemybusiness,
 	DiGoogleAnalytics,
-	LuServerCog
+	LuServerCog,
+	BsFillLightningChargeFill
 }
 
 const FeatureItem = ({ title, icon }) => {

@@ -1,11 +1,13 @@
 import React from 'react'
 import SectionHeader from './SectionHeader'
 import SectionFooter from './SectionFooter'
+import IconCard from './IconCard'
+import PriceCard from './PriceCard'
 
 const CardSection = ({
 	title,
 	description,
-	children,
+	cards,
 	footerContent,
 	content2,
 	imgUrl,
@@ -18,7 +20,35 @@ const CardSection = ({
 				description={description}
 				imgUrl={imgUrl}
 				imageAlt={imageAlt}>
-				{children}
+				{cards && cards.length > 0 && (
+					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+						{cards.map((card, index) => {
+							if (card.type === 'IconCard') {
+								return (
+									<IconCard
+										key={index}
+										title={card.title}
+										icon={card.icon}
+										description={card.description}
+									/>
+								)
+							} else if (card.type === 'PriceCard') {
+								return (
+									<PriceCard
+										key={index}
+										index={index}
+										name={card.name}
+										price={card.price}
+										description={card.description}
+										features={card.features}
+										button={card.button}
+									/>
+								)
+							}
+							return null
+						})}
+					</div>
+				)}
 			</SectionHeader>
 			{footerContent && (
 				<SectionFooter content={footerContent} content2={content2} />

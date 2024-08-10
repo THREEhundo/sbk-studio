@@ -61,7 +61,8 @@ const SectionHeader = ({
 					/>
 				</div>
 			)}
-			{hasChildren && (
+			<div className='col-span-full'>{children}</div>
+			{/*{hasChildren && (
 				<div
 					className={
 						imgUrl && imageType === 'IconCard'
@@ -91,7 +92,7 @@ const SectionHeader = ({
 						}
 					})}
 				</div>
-			)}
+			)}*/}
 		</div>
 	)
 }
