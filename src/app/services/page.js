@@ -54,30 +54,32 @@ const Services = async () => {
 	if (!servicesObj) {
 		notFound()
 	}
-	const h3sObj = servicesObj.sections.filter(service => service.h3s)
-	//console.log(h3sObj, 'H3object')
+	const [servicesForSmallBusiness] = servicesObj.sections.filter(
+		service => service.h3s
+	)
+
 	return (
 		<PageLayout
 			headerProps={{
 				heroData: servicesObj,
 				specificId: SERVICES_PAGE_TITLE
 			}}>
-			<MainContainer>
-				{h3sObj.length > 0 && <TopicContainer dataSet={h3sObj} />}
-				<div className='grid grid-row-1 md:grid-row-2 lg:grid-row-3 gap-8 mb-12'>
-					{servicesObj.sections.map(
-						section =>
-							!section.h3s && (
-								<HoverRevealComponent
-									key={section.id || section.h2}
-									title={section.h2}
-									content={section.content}
-									content2={section.content2}
-								/>
-							)
-					)}
-				</div>
-			</MainContainer>
+			{servicesForSmallBusiness && (
+				<TopicContainer dataSet={servicesForSmallBusiness} />
+			)}
+			<div className='grid grid-row-1 md:grid-row-2 lg:grid-row-3 gap-8 mb-12'>
+				{servicesObj.sections.map(
+					section =>
+						!section.h3s && (
+							<HoverRevealComponent
+								key={section.id || section.h2}
+								title={section.h2}
+								content={section.content}
+								content2={section.content2}
+							/>
+						)
+				)}
+			</div>
 		</PageLayout>
 	)
 }
