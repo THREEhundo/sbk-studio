@@ -8,19 +8,25 @@ const SectionHeader = ({
 	imgUrl,
 	imageAlt,
 	imageType,
-	children
+	children,
+	hasPriceCard = false
 }) => {
 	const hasChildren = React.Children.count(children) > 0
 	const onlyGrid = `grid gap-4`
 	const gridContentImageIcons = `md:grid-cols-[minmax(auto,500px)_1fr]`
 	const gridClasses = `max-w-[750px] m-auto justify-center`
-	const flexClasses =
-		'flex flex-wrap gap-4 justify-center mx-auto max-w-[500px]'
+	const flexClasses = 'flex flex-wrap gap-4 max-w-[500px]'
 
+	//const layoutClasses =
+	//	title == 'Full-Service Support to Grow Your Online Presence'
+	//		? `${onlyGrid} ${gridContentImageIcons}`
+	//		: title == 'Affordable Custom Websites That Perform'
+	//		? `${onlyGrid} ${gridClasses}`
+	//		: ''
 	const layoutClasses =
-		title == 'Full-Service Support to Grow Your Online Presence'
+		title === 'Full-Service Support to Grow Your Online Presence'
 			? `${onlyGrid} ${gridContentImageIcons}`
-			: title == 'Affordable Custom Websites That Perform'
+			: title === 'Affordable Custom Websites That Perform'
 			? `${onlyGrid} ${gridClasses}`
 			: ''
 
@@ -41,8 +47,15 @@ const SectionHeader = ({
 	// For PriceCard Container the wrapper has no classes
 	// add wrapper classes for flex
 
+	//const hasPriceCard = cards.some(card => card.type === 'PriceCard')
+	const priceContainerClasses = `flex flex-col flex-wrap items-center`
+
+	const finalClasses = `${layoutClasses} ${
+		layoutClasses === '' && hasPriceCard ? priceContainerClasses : ''
+	}`.trim()
+
 	return (
-		<div className={layoutClasses}>
+		<div className={finalClasses}>
 			<div className={innerLayoutClasses}>
 				<h2 className='text-2xl font-bold mb-4'>{title}</h2>
 				<p className='mb-4'>{description}</p>
@@ -61,7 +74,7 @@ const SectionHeader = ({
 					/>
 				</div>
 			)}
-			<div className='col-span-full'>{children}</div>
+			<div>{children}</div>
 			{/*{hasChildren && (
 				<div
 					className={

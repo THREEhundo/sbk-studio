@@ -13,13 +13,16 @@ const CardSection = ({
 	imgUrl,
 	imageAlt
 }) => {
+	const priceCardPresent = cards.some(card => card.type === 'PriceCard')
+
 	return (
 		<section className='responsive-container pb-12'>
 			<SectionHeader
 				title={title}
 				description={description}
 				imgUrl={imgUrl}
-				imageAlt={imageAlt}>
+				imageAlt={imageAlt}
+				hasPriceCard={priceCardPresent}>
 				{cards && cards.length > 0 && (
 					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 						{cards.map((card, index) => {

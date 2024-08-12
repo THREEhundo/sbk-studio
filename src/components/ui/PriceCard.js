@@ -8,19 +8,13 @@ const getGradientClass = index => {
 
 	return gradients[index % gradients.length]
 }
-/**
- * 	<div
-			className={`bg-neutral-800 ${getGradientClass(
-				index
-			)} rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl h-full flex-shrink flex-grow-0 basis-80 justify-evenly`}>
- */
 
 const PriceCard = ({ index, list = [], className, ...card }) => {
 	return (
 		<div
 			className={`bg-neutral-800 ${getGradientClass(
 				index
-			)} rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl flex basis-80 `}>
+			)} rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl flex max-w-[22rem]`}>
 			<div className='p-8 h-full flex flex-col justify-between'>
 				<h3 className='text-2xl font-bold text-primary-500 mb-4'>
 					{card.name}
