@@ -10,8 +10,21 @@ const TopicContainer = async ({ dataSet }) => {
 	}
 
 	return (
-		<section>
-			<div className='grid gap-12 items-center'>
+		<section className='pb-12'>
+			<div className='grid gap-12 items-center lg:grid-cols-2 grid-flow-col-dense'>
+				<div className='transform transition-transform duration-300 hover:scale-105'>
+					<Image
+						src={dataSet.image}
+						alt={dataSet.imageAlt}
+						width={1871}
+						height={3222}
+						className='rounded-lg shadow-lg w-full h-auto'
+						placeholder='blur'
+						blurDataURL={`data:image/svg+xml;base64,${toBase64(
+							shimmer(640, 360)
+						)}`}
+					/>
+				</div>
 				<div>
 					<h2 className='text-3xl font-bold text-primary-500 mb-6 transition-colors duration-300 hover:text-secondary-500'>
 						{dataSet.h2}
@@ -24,9 +37,18 @@ const TopicContainer = async ({ dataSet }) => {
 							{dataSet.content2}
 						</p>
 					)}
+					{dataSet.h3s &&
+						Array.isArray(dataSet.h3s) &&
+						dataSet.h3s.map((item, i) => (
+							<FeatureItem
+								key={i}
+								title={item.title}
+								icon={item.icon}
+							/>
+						))}
 				</div>
 
-				{dataSet.image && (
+				{/*{dataSet.image && (
 					<div className='transform transition-transform duration-300 hover:scale-105'>
 						<Image
 							src={dataSet.image}
@@ -42,8 +64,8 @@ const TopicContainer = async ({ dataSet }) => {
 							)}`}
 						/>
 					</div>
-				)}
-				<div>
+				)}*/}
+				{/*<div>
 					{dataSet.h3s &&
 						Array.isArray(dataSet.h3s) &&
 						dataSet.h3s.map((item, i) => (
@@ -53,7 +75,7 @@ const TopicContainer = async ({ dataSet }) => {
 								icon={item.icon}
 							/>
 						))}
-				</div>
+				</div>*/}
 			</div>
 		</section>
 	)
