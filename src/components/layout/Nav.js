@@ -115,11 +115,11 @@ export const Nav = () => {
 const NavItems = ({ pathname, mobile, toggleMenu }) => {
 	const linkClass = `block py-2 ${
 		mobile ? 'text-2xl mb-4' : ''
-	} text-primary-100 hover:text-secondary-500 transition-colors duration-200`
+	} text-primary-500 hover:text-secondary-500 transition-colors duration-200`
 
 	const linkContactClass = `block py-2 ${
 		mobile ? 'hidden' : ''
-	} text-primary-100 hover:text-secondary-500 transition-colors duration-200`
+	} text-primary-500 hover:text-secondary-500 transition-colors duration-200`
 	return (
 		<>
 			<li>
@@ -173,7 +173,7 @@ const NavItems = ({ pathname, mobile, toggleMenu }) => {
 const ContactLink = ({ mobile, toggleMenu }) => {
 	const linkClass = `block py-2 ${
 		mobile ? 'text-2xl' : 'hidden'
-	} text-primary-100 hover:text-secondary-500 transition-colors duration-200`
+	} text-primary-500 hover:text-secondary-500 transition-colors duration-200`
 
 	return (
 		<Link
