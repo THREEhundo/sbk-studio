@@ -20,10 +20,9 @@ const CardSection = ({
 		'SBK STUDIO | About Us | Small Business Web Design & Development'
 			? 'flex flex-col items-center'
 			: ''
-
+	const cardsLayoutClasses = priceCardPresent ? `lg:grid-cols-3` : ''
 	return (
-		<section
-			className={`responsive-container pb-12 ${aboutPageContainerClasses}`}>
+		<section className={`pb-12 ${aboutPageContainerClasses}`}>
 			<SectionHeader
 				title={title}
 				description={description}
@@ -31,7 +30,8 @@ const CardSection = ({
 				imageAlt={imageAlt}
 				hasPriceCard={priceCardPresent}>
 				{cards && cards.length > 0 && (
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+					<div
+						className={`grid gap-6 grid-cols-1 md:grid-cols-2 ${cardsLayoutClasses}`}>
 						{cards.map((card, index) => {
 							if (card.type === 'IconCard') {
 								return (
