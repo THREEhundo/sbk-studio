@@ -11,12 +11,19 @@ const CardSection = ({
 	footerContent,
 	content2,
 	imgUrl,
-	imageAlt
+	imageAlt,
+	specificId
 }) => {
 	const priceCardPresent = cards.some(card => card.type === 'PriceCard')
+	const aboutPageContainerClasses =
+		specificId ===
+		'SBK STUDIO | About Us | Small Business Web Design & Development'
+			? 'flex flex-col items-center'
+			: ''
 
 	return (
-		<section className='responsive-container pb-12'>
+		<section
+			className={`responsive-container pb-12 ${aboutPageContainerClasses}`}>
 			<SectionHeader
 				title={title}
 				description={description}

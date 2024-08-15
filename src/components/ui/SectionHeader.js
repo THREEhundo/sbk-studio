@@ -15,7 +15,7 @@ const SectionHeader = ({
 	const onlyGrid = `grid gap-4`
 	const gridContentImageIcons = `md:grid-cols-[minmax(auto,500px)_1fr]`
 	const gridClasses = `max-w-[750px] m-auto justify-center`
-	const flexClasses = 'flex flex-wrap gap-4 max-w-[500px]'
+	const flexClasses = 'flex flex-wrap gap-4 max-w-[700px]'
 
 	//const layoutClasses =
 	//	title == 'Full-Service Support to Grow Your Online Presence'

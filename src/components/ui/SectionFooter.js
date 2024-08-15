@@ -2,7 +2,7 @@ import React from 'react'
 
 const SectionFooter = ({ content, content2 }) => {
 	return (
-		<div className=' mx-auto max-w-[500px]'>
+		<div className=' mx-auto max-w-[700px]'>
 			<p className='mb-4'>{content}</p>
 			{content2 && <p className='mb-4'>{content2}</p>}
 		</div>

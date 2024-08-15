@@ -89,6 +89,7 @@ const About = async () => {
 					imageType={section.type}
 					footerContent={section.content}
 					content2={section.content2}
+					specificId={ABOUT_PAGE_TITLE}
 				/>
 			))}
 		</PageLayout>
