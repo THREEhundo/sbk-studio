@@ -20,9 +20,15 @@ const CardSection = ({
 		'SBK STUDIO | About Us | Small Business Web Design & Development'
 			? 'flex flex-col items-center'
 			: ''
-	const cardsLayoutClasses = priceCardPresent ? `lg:grid-cols-3` : ''
+	const cardsLayoutClasses =
+		priceCardPresent && `lg:grid-cols-3 lg:gap-[4.5rem]`
+	const whyChooseUsClasses =
+		title === 'Why Choose Us for Your Small Business Website'
+			? `flex justify-center`
+			: ''
 	return (
-		<section className={`pb-12 ${aboutPageContainerClasses}`}>
+		<section
+			className={`pb-12 ${whyChooseUsClasses} ${aboutPageContainerClasses}`}>
 			<SectionHeader
 				title={title}
 				description={description}
