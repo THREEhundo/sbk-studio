@@ -57,7 +57,9 @@ const SectionHeader = ({
 	return (
 		<div className={finalClasses}>
 			<div className={innerLayoutClasses}>
-				<h2 className='text-2xl font-bold mb-4 m-auto'>{title}</h2>
+				<h2 className='text-2xl font-bold mb-4 m-auto w-fit'>
+					{title}
+				</h2>
 				<p className='mb-4'>{description}</p>
 			</div>
 			{imgUrl && (

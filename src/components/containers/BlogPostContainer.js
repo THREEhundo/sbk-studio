@@ -19,7 +19,7 @@ const BlogPostContainer = async ({ dataSet }) => {
 		}
 
 		return (
-			<section className='responsive-container py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+			<section className='py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 				{posts.map(
 					(post, i) =>
 						i !== 0 && <BlogPostCard key={post.id} post={post} />
